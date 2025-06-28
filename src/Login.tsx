@@ -11,7 +11,7 @@ interface LoginErrorResponse {
   error: string;
 }
 
-function Login(): JSX.Element {
+function Login() {
   
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
