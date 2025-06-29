@@ -1,0 +1,14 @@
+.create-project-container {
+  background-color: var(--color-white);
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+  max-width: 600px;
+  margin: 2rem auto; 
+}
+.create-project-title { font-family: var(--font-heading); color: var(--color-primary); }
+.create-project-subtitle { font-family: var(--font-heading); color: #5a6474; margin-top: -1rem; margin-bottom: 2rem; }
+.project-form .form-group { }
+.project-form textarea { width: 100%; padding: 0.75rem 1rem; border: 1px solid #dbe2e9; border-radius: 8px; font-family: var(--font-body); resize: vertical; }
+.create-button { font-family: var(--font-heading); width: 100%; background-color: var(--color-primary); color: var(--color-white); border: none; padding: 0.875rem; border-radius: 8px; font-size: 1rem; font-weight: 700; cursor: pointer; transition: background-color 0.2s; margin-top: 1rem; }
+.create-button:disabled { background-color: #5a6474; cursor: not-allowed; }

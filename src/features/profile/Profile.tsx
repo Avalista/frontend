@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 import { getUserProfile, updateUserProfile, changePassword } from '../../api/userApi';
 import { UserProfile, ApiErrorResponse } from '../../types/auth.types';
 import { isAxiosError } from 'axios';
@@ -104,6 +104,12 @@ function Profile() {
         <img src={editAvatarUrl} alt="Foto de perfil" className="profile-avatar" />
         <h1 className="profile-name">{editName}</h1>
         <p className="profile-email">{user.email}</p>
+
+        <Link to="/projects/create" className="create-project-link-button">
+           Criar Novo Projeto
+        </Link>
+
+        <div className="profile-stats"></div>
 
         <div className="profile-bio">
           <h2 className="section-title">Sobre Mim</h2>
