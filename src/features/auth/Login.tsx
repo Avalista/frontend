@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { loginUser } from '../../api/authApi'; 
+import { useNavigate, Link } from 'react-router-dom';
+import { loginUser } from '../../api/authApi';
 import { isAxiosError } from 'axios';
 import { ApiErrorResponse } from '../../types/auth.types';
 
@@ -7,7 +8,8 @@ import logo from '../../assets/logo-horizontal-laranja.svg';
 import './Login.css';
 
 function Login() {
-
+  
+  const navigate = useNavigate(); 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string>('');
@@ -15,10 +17,12 @@ function Login() {
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setError('');
-    try {
-      const data = await loginUser({ email, password });
-      console.log('Login bem-sucedido!', data);
+  try {
+    const data = await loginUser({ email, password });
+    console.log('Login bem-sucedido!', data);
 
+    localStorage.setItem('authToken', data.token);
+    navigate('/profile'); 
     } catch (err) {
       if (isAxiosError<ApiErrorResponse>(err) && err.response) {
         setError(err.response.data.message[0]);
@@ -66,6 +70,9 @@ function Login() {
           <button type="submit" className="login-button">
             Entrar
           </button>
+          <p className="navigation-link-text">
+            Não tem uma conta? <Link to="/register" className="navigation-link">Cadastre-se</Link>
+          </p>
         </form>
       </div>
     </div>
