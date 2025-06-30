@@ -36,7 +36,7 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  color: var(--color-primary);
+  color: var(--brand-primary);
   background-color: transparent;
   border: none;
   cursor: pointer;
