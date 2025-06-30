@@ -12,25 +12,33 @@ function Login() {
   const navigate = useNavigate(); 
   const [email, setEmail] = useState<string>('');
   const [password, setPassword] = useState<string>('');
-  const [error, setError] = useState<string>('');
+  const [error, setError] = useState<string | string[]>('');
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
-    setError('');
+  // Dentro de src/features/auth/Login.tsx
+
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  e.preventDefault();
+  setError('');
+
   try {
-    const data = await loginUser({ email, password });
-    console.log('Login bem-sucedido!', data);
+    const responseData = await loginUser({ email, password });
+    console.log('Login bem-sucedido!', responseData);
 
-    localStorage.setItem('authToken', data.token);
+    localStorage.setItem('authToken', responseData.access_token);
     navigate('/profile'); 
-    } catch (err) {
-      if (isAxiosError<ApiErrorResponse>(err) && err.response) {
-        setError(err.response.data.message[0]);
-      } else {
-        setError('Não foi possível fazer o login.');
-      }
+
+  } catch (err) {
+    if (isAxiosError<ApiErrorResponse>(err) && err.response) {
+      const errorMessage = Array.isArray(err.response.data.message)
+        ? err.response.data.message.join(', ')
+        : err.response.data.message;
+      setError(errorMessage);
+    } else {
+      console.error(err);
+      setError('Não foi possível fazer o login. Verifique sua conexão.');
     }
-  };
+  }
+};
 
   return (
     <div className="login-page">
