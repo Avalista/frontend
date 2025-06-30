@@ -55,7 +55,7 @@ function Register() {
     const result = await registerUser({ name, email, password });
     
     alert('Cadastro realizado com sucesso! Você será redirecionado para o login.');
-    navigate('/login');
+    navigate('/dashboard');
 
     } catch (err) {
       if (isAxiosError<ApiErrorResponse>(err) && err.response) {

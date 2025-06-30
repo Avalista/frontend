@@ -25,7 +25,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     console.log('Login bem-sucedido!', responseData);
 
     localStorage.setItem('authToken', responseData.access_token);
-    navigate('/profile'); 
+    navigate('/dashboard'); 
 
   } catch (err) {
     if (isAxiosError<ApiErrorResponse>(err) && err.response) {
