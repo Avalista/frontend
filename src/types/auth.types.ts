@@ -5,10 +5,11 @@ export interface LoginCredentials {
 
 export interface RegisterCredentials extends LoginCredentials {
   name: string;
+  passwordConfirm: string;
 }
 
 export interface LoginSuccessResponse {
-  token: string;
+  access_token: string;
 }
 
 export interface ApiErrorResponse {

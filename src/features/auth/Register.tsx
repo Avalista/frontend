@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { registerUser } from '../../api/authApi';
-import { isAxiosError } from 'axios';
+import axios, { isAxiosError } from 'axios';
 import { ApiErrorResponse } from '../../types/auth.types';
 
 import logo from '../../assets/logo-horizontal-laranja.svg';
 import './Register.css'; 
+import { url } from 'inspector';
 
 function Register() {
   const navigate = useNavigate(); // hook para navegação
@@ -13,7 +14,7 @@ function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
 
   const [errors, setErrors] = useState<any>({});
 
@@ -33,8 +34,8 @@ function Register() {
       newErrors.password = 'A senha deve ter 8+ caracteres, com maiúscula, minúscula e número.';
     }
     
-    if (password !== confirmPassword) {
-      newErrors.confirmPassword = 'As senhas não coincidem.';
+    if (password !== passwordConfirm) {
+      newErrors.passwordConfirm = 'As senhas não coincidem.';
     }
     
     setErrors(newErrors);
@@ -42,19 +43,20 @@ function Register() {
   };
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-    e.preventDefault();
+  e.preventDefault();
+  setErrors({});
 
-    setErrors({});
+  if (!validateForm()) {
+    console.log("Erros de validação do formulário.");
+    return;
+  }
 
-    if (!validateForm()) {
-      console.log("Erros de validação do formulário.");
-      return; 
-    }
+  try {
+    const result = await registerUser({ name, email, password });
+    
+    alert('Cadastro realizado com sucesso! Você será redirecionado para o login.');
+    navigate('/login');
 
-    try {
-      const result = await registerUser({ name, email, password });
-      alert('Cadastro realizado com sucesso! Você será redirecionado para o login.');
-      navigate('/login'); 
     } catch (err) {
       if (isAxiosError<ApiErrorResponse>(err) && err.response) {
 
@@ -94,9 +96,9 @@ function Register() {
           </div>
           
           <div className="form-group">
-            <label htmlFor="confirmPassword">Confirme sua senha</label>
-            <input type="password" id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required />
-            {errors.confirmPassword && <p className="field-error-message">{errors.confirmPassword}</p>}
+            <label htmlFor="passwordConfirm">Confirme sua senha</label>
+            <input type="password" id="passwordConfirm" value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)} required />
+            {errors.passwordConfirm && <p className="field-error-message">{errors.passwordConfirm}</p>}
           </div>
           
           <button type="submit" className="register-button">Criar conta</button>
