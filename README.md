@@ -131,9 +131,3 @@ git push -u origin feat/nome-da-feature
 ## 🔧 Suporte
 
 Para dúvidas, sugestões ou problemas, abra uma [issue](https://github.com/Avalista/frontend/issues) ou entre em contato com os mantenedores do projeto.
-
----
-
-## 🎓 Licença
-
-Este projeto está licenciado sob os termos da licença MIT.
