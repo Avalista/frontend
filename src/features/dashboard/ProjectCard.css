@@ -1,0 +1,10 @@
+.project-card { background-color: var(--color-white); padding: 1rem; border-radius: 12px; box-shadow: 0 4px 6px rgba(0,0,0,0.05); }
+.project-name { font-weight: 600; color: #374151; }
+.progress-bar-container { width: 100%; background-color: #e5e7eb; border-radius: 9999px; height: 0.5rem; margin-top: 0.75rem; }
+.progress-bar { height: 100%; border-radius: 9999px; }
+.project-progress-text { text-align: right; font-size: 0.875rem; color: #6b7280; margin-top: 0.25rem; }
+
+.progress-indigo { background-color: #6366f1; }
+.progress-teal { background-color: #2dd4bf; }
+.progress-gray { background-color: #6b7280; }
+.progress-pink { background-color: #ec4899; }
