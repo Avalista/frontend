@@ -137,7 +137,3 @@ Para dúvidas, sugestões ou problemas, abra uma [issue](https://github.com/Aval
 ## 🎓 Licença
 
 Este projeto está licenciado sob os termos da licença MIT.
-
----
-
-Feito com ❤️ por estudantes do IFRN – Campus Natal Zona Norte.
