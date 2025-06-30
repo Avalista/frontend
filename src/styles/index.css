@@ -1,65 +1,50 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;700;800&display=swap');
 
 :root {
+  --color-insight-primary: #070248;
+  --color-insight-pastel: #CECDFF;
+  
+  --color-clarity-primary: #36A08E;
+  --color-clarity-pastel: #D5FFF9;
+  
+  --color-growth-primary: #4DAA00;
+  --color-growth-pastel: #E1FCCF;
 
-    /* Definindo nossas fontes como variáveis globais */
+  --color-innovation-primary: #D57C19;
+  --color-innovation-pastel: #FFE6C5;
+  
+  --color-critical-primary: #C61819;
+  --color-critical-pastel: #FFD4D4;
+  
+  --color-creative-primary: #782A53;
+  --color-creative-pastel: #FBDAEC;
+  
+  --color-trust-primary: #4C85C7;
+  --color-trust-pastel: #C7E2FF;
+
+  --color-disrupt-primary: #9C1DFF;
+  --color-disrupt-pastel: #D9D2E9;
+  
+  --color-white: #ffffff;
+  --color-gray-100: #f9fafb;
+  --color-gray-200: #eef2f7;
+  --color-gray-500: #6b7280;
+  --color-gray-900: #111827;
+  --color-success: #067647;
+  --color-error: #d93025;
+
+  
+  --brand-primary: var(--color-insight-primary);
+  --brand-pastel: var(--color-insight-pastel);
+  
   --font-heading: 'Manrope', sans-serif;
   --font-body: 'DM Mono', monospace;
-
-  --color-primary: #070248;
-  --color-white: #ffffff;
-}
-
-a {
-  font-weight: 500;
-  color: #646cff;
-  text-decoration: inherit;
-}
-a:hover {
-  color: #535bf2;
 }
 
 body {
   margin: 0;
-  font-family: var(--font-body); /* DM Mono como padrão para o corpo */
+  font-family: var(--font-body);
+  background-color: var(--color-gray-100);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #f4f7f6; 
-}
-
-h1 {
-  font-size: 3.2em;
-  line-height: 1.1;
-}
-
-button {
-  border-radius: 8px;
-  border: 1px solid transparent;
-  padding: 0.6em 1.2em;
-  font-size: 1em;
-  font-weight: 500;
-  font-family: inherit;
-  background-color: #1a1a1a;
-  cursor: pointer;
-  transition: border-color 0.25s;
-}
-button:hover {
-  border-color: #646cff;
-}
-button:focus,
-button:focus-visible {
-  outline: 4px auto -webkit-focus-ring-color;
-}
-
-@media (prefers-color-scheme: light) {
-  :root {
-    color: #213547;
-    background-color: #ffffff;
-  }
-  a:hover {
-    color: #747bff;
-  }
-  button {
-    background-color: #f9f9f9;
-  }
 }
