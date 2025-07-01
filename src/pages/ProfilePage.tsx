@@ -1,6 +1,10 @@
-import React from 'react';
 import Profile from '../features/profile/Profile';
+import { DashboardLayout } from '../features/dashboard/DashboardLayout';
 
 export function ProfilePage() {
-  return <Profile />;
+  return (
+    <DashboardLayout>
+      <Profile />
+    </DashboardLayout>
+  );
 }

@@ -1,7 +1,7 @@
 .profile-page {
   display: flex;
   justify-content: center;
-  align-items: flex-start; 
+  align-items: flex-start;
   min-height: 100vh;
   padding: 4rem 2rem;
   box-sizing: border-box;
@@ -15,12 +15,12 @@
   width: 100%;
   max-width: 500px;
   text-align: center;
-  overflow: hidden; 
-  position: relative; 
+  overflow: hidden;
+  position: relative;
 }
 
 .profile-header {
-  background: linear-gradient(45deg, #1f1a63, #3c34a3);
+  background: linear-gradient(45deg, var(--color-insight-primary), #3c34a3);
   height: 120px;
   margin-bottom: 60px;
 }
@@ -31,13 +31,13 @@
   border-radius: 50%;
   border: 5px solid var(--color-white);
   box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
-  margin-top: -60px; 
+  margin-top: -60px;
   object-fit: cover;
 }
 
 .profile-name {
   font-family: var(--font-heading);
-  color: var(--color-primary);
+  color: var(--brand-primary);
   font-size: 2rem;
   font-weight: 800;
   margin: 1rem 0 0.25rem;
@@ -45,70 +45,27 @@
 
 .profile-email {
   font-family: var(--font-body);
-  color: #5a6474;
+  color: var(--color-gray-500);
   font-size: 1rem;
-  margin-bottom: 2rem;
-}
-
-.badges-section {
-  padding: 0 2rem 2rem;
-}
-
-.badges-title {
-  font-family: var(--font-heading);
-  color: var(--color-primary);
-  font-weight: 700;
-  border-bottom: 2px solid #eef2f7;
-  padding-bottom: 0.75rem;
   margin-bottom: 1.5rem;
 }
 
-.badges-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
-  gap: 1.5rem;
-}
-
-.badge-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 0.5rem;
-  transition: transform 0.2s ease-in-out;
-}
-
-.badge-item:hover {
-  transform: scale(1.1); 
-}
-
-.badge-image {
-  width: 48px;
-  height: 48px;
-}
-
-.badge-name {
-  font-family: var(--font-heading);
-  font-size: 0.75rem;
-  color: #333;
-  font-weight: 700;
-}
-
-.logout-button {
-  top: 1rem;
-  right: 1rem;
-  background-color: rgba(255, 255, 255, 0.2);
+.create-project-link-button {
+  display: inline-block;
+  background-color: var(--brand-primary);
   color: var(--color-white);
-  border: 1px solid rgba(255, 255, 255, 0.3);
+  padding: 0.75rem 1.5rem;
   border-radius: 50px;
-  padding: 0.5rem 1rem;
+  text-decoration: none;
   font-family: var(--font-heading);
   font-weight: 700;
-  cursor: pointer;
-  transition: background-color 0.2s;
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
-.logout-button:hover {
-  background-color: rgba(255, 255, 255, 0.4);
+.create-project-link-button:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .profile-stats {
@@ -116,8 +73,8 @@
   justify-content: space-around;
   padding: 1rem 0;
   margin: 1.5rem 2rem;
-  border-top: 1px solid #eef2f7;
-  border-bottom: 1px solid #eef2f7;
+  border-top: 1px solid var(--color-gray-200);
+  border-bottom: 1px solid var(--color-gray-200);
 }
 
 .stat-item {
@@ -129,12 +86,12 @@
   font-family: var(--font-heading);
   font-size: 1.5rem;
   font-weight: 800;
-  color: var(--color-primary);
+  color: var(--brand-primary);
 }
 
 .stat-label {
   font-size: 0.75rem;
-  color: #5a6474;
+  color: var(--color-gray-500);
   text-transform: uppercase;
   letter-spacing: 0.5px;
 }
@@ -147,9 +104,9 @@
 
 .section-title {
   font-family: var(--font-heading);
-  color: var(--color-primary);
+  color: var(--brand-primary);
   font-weight: 700;
-  border-bottom: 2px solid #eef2f7;
+  border-bottom: 2px solid var(--color-gray-200);
   padding-bottom: 0.75rem;
   margin-bottom: 1.5rem;
   text-align: left;
@@ -157,13 +114,13 @@
 
 .profile-bio p {
   font-family: var(--font-body);
-  color: #333;
+  color: var(--color-gray-900);
   line-height: 1.6;
 }
 
 .profile-tabs {
   display: flex;
-  border-bottom: 1px solid #eef2f7;
+  border-bottom: 1px solid var(--color-gray-200);
 }
 
 .tab-button {
@@ -175,17 +132,17 @@
   border: none;
   background-color: transparent;
   cursor: pointer;
-  color: #5a6474;
+  color: var(--color-gray-500);
   position: relative;
   transition: color 0.2s;
 }
 
 .tab-button:hover {
-  color: var(--color-primary);
+  color: var(--brand-primary);
 }
 
 .tab-button.active {
-  color: var(--color-primary);
+  color: var(--brand-primary);
 }
 
 .tab-button.active::after {
@@ -195,14 +152,43 @@
   left: 0;
   right: 0;
   height: 3px;
-  background-color: var(--color-primary);
+  background-color: var(--brand-primary);
   border-radius: 3px;
 }
 
-/* Conteúdo das abas */
 .tab-content {
   padding: 2rem;
   text-align: left;
+}
+
+.activity-section .badges-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  gap: 1.5rem;
+}
+
+.activity-section .badge-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.activity-section .badge-item:hover {
+  transform: scale(1.1);
+}
+
+.activity-section .badge-image {
+  width: 48px;
+  height: 48px;
+}
+
+.activity-section .badge-name {
+  font-family: var(--font-heading);
+  font-size: 0.75rem;
+  color: var(--color-gray-900);
+  font-weight: 700;
 }
 
 .activity-list {
@@ -216,7 +202,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 1rem 0;
-  border-bottom: 1px solid #eef2f7;
+  border-bottom: 1px solid var(--color-gray-200);
   font-family: var(--font-body);
 }
 
@@ -226,34 +212,28 @@
 
 .activity-date {
   font-size: 0.875rem;
-  color: #5a6474;
-}
-
-.settings-section {
-  text-align: center;
-  padding: 2rem;
-  color: #5a6474;
+  color: var(--color-gray-500);
 }
 
 .settings-section {
   display: flex;
   flex-direction: column;
   gap: 2rem;
+  text-align: left;
 }
 
 .settings-form-card {
-  background-color: #f9fafb;
-  border: 1px solid #eef2f7;
+  background-color: var(--color-gray-100);
+  border: 1px solid var(--color-gray-200);
   border-radius: 12px;
   padding: 1.5rem;
 }
 
 .settings-form-card h3 {
   font-family: var(--font-heading);
-  color: var(--color-primary);
+  color: var(--brand-primary);
   margin-top: 0;
   margin-bottom: 1.5rem;
-  text-align: left;
 }
 
 .settings-form-card .form-group {
@@ -275,7 +255,7 @@
 .save-button {
   font-family: var(--font-heading);
   width: 100%;
-  background-color: var(--color-primary);
+  background-color: var(--brand-primary);
   color: var(--color-white);
   border: none;
   padding: 0.75rem;
@@ -292,7 +272,7 @@
 }
 
 .success-message {
-  color: #067647;
+  color: var(--color-success);
   background-color: #ecfdf3;
   border: 1px solid #abefc5;
   border-radius: 8px;
@@ -303,19 +283,51 @@
   margin-bottom: 1rem;
 }
 
-.create-project-link-button {
-  display: inline-block;
-  background-color: var(--color-primary);
+.logout-button {
+  top: 1rem;
+  right: 1rem;
+  background-color: rgba(255, 255, 255, 0.2);
   color: var(--color-white);
-  padding: 0.75rem 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 50px;
-  text-decoration: none;
+  padding: 0.5rem 1rem;
   font-family: var(--font-heading);
   font-weight: 700;
-  margin-bottom: 1.5rem;
-  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: pointer;
+  transition: background-color 0.2s;
 }
-.create-project-link-button:hover {
-  transform: translateY(-3px);
-  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+.logout-button:hover {
+  background-color: rgba(255, 255, 255, 0.4);
+}
+
+.file-upload-container {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.file-upload-button {
+  font-family: var(--font-body);
+  background-color: var(--color-white);
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.file-upload-button:hover {
+  background-color: var(--color-gray-100);
+  border-color: #d1d5db;
+}
+
+.file-name {
+  font-size: 0.875rem;
+  color: var(--color-gray-500);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
