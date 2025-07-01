@@ -1,43 +1,17 @@
+import apiClient from './apiClient';
 import { UserProfile, UserProfileUpdate } from '../types/auth.types';
-import { mockUserProfile } from '../mocks/user.mocks';
 
 export const getUserProfile = async (): Promise<UserProfile> => {
-  console.log('SIMULANDO CHAMADA DE API para buscar perfil...');
-
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      console.log('Simulando resposta com SUCESSO');
-      resolve(mockUserProfile);
-    }, 500);
-  });
+  const response = await apiClient.get<UserProfile>('/profile/me');
+  return response.data;
 };
 
 export const updateUserProfile = async (data: UserProfileUpdate): Promise<UserProfile> => {
-  console.log('SIMULANDO ATUALIZAÇÃO DE PERFIL com:', data);
-
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      // Simula a atualização dos dados e retorna o perfil "atualizado"
-      const updatedProfile = { ...mockUserProfile, ...data };
-      console.log('Perfil atualizado com SUCESSO', updatedProfile);
-      resolve(updatedProfile);
-    }, 1000);
-  });
+  const response = await apiClient.patch<UserProfile>('/evaluators', data);
+  return response.data;
 };
 
 export const changePassword = async (passwordData: any): Promise<{ message: string }> => {
-  console.log('SIMULANDO ALTERAÇÃO DE SENHA com:', passwordData);
-
-  return new Promise((resolve, reject) => {
-    setTimeout(() => {
-      if (passwordData.currentPassword !== '123456') {
-        const error = { response: { data: { message: ['Senha atual incorreta.'] } } };
-        console.log('Simulando erro de senha atual');
-        reject(error);
-      } else {
-        console.log('Senha alterada com SUCESSO');
-        resolve({ message: 'Senha alterada com sucesso!' });
-      }
-    }, 1000);
-  });
+  const response = await apiClient.patch('/evaluators/password', passwordData);
+  return response.data;
 };

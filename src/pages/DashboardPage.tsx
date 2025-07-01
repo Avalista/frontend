@@ -21,7 +21,7 @@ export function DashboardPage() {
   if (loading) {
     return (
       <DashboardLayout>
-        <div className="loading-state">Carregando Dashboard...</div>
+        <div className="loading-state"> Iniciando modo Avalista...</div>
       </DashboardLayout>
     );
   }
