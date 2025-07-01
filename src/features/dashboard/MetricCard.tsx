@@ -14,7 +14,7 @@ export function MetricCard({ title, value, change, isPositive }: MetricCardProps
   const Icon = change === '0%' ? Minus : (isPositive ? ArrowUpRight : ArrowDownRight);
 
   return (
-    <div className="metric-card">
+    <div className="metric-card-layout">
       <p className="metric-title">{title}</p>
       <div className="metric-body">
         <p className="metric-value">{value}</p>
