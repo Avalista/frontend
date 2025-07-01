@@ -1,29 +1,32 @@
 @import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;700;800&display=swap');
 
 :root {
-  --color-insight-primary: #070248;
-  --color-insight-pastel: #CECDFF;
-  
-  --color-clarity-primary: #36A08E;
-  --color-clarity-pastel: #D5FFF9;
-  
-  --color-growth-primary: #4DAA00;
-  --color-growth-pastel: #E1FCCF;
 
-  --color-innovation-primary: #D57C19;
-  --color-innovation-pastel: #FFE6C5;
+  --color-border: #C3D3E2;
   
-  --color-critical-primary: #C61819;
-  --color-critical-pastel: #FFD4D4;
+  --color-af-primary: #070248;
+  --color-af-pastel: #CECDFF;
   
-  --color-creative-primary: #782A53;
-  --color-creative-pastel: #FBDAEC;
+  --color-co-primary: #36A08E;
+  --color-co-pastel: #D5FFF9;
   
-  --color-trust-primary: #4C85C7;
-  --color-trust-pastel: #C7E2FF;
+  --color-fm-primary: #4DAA00;
+  --color-fm-pastel: #E1FCCF;
 
-  --color-disrupt-primary: #9C1DFF;
-  --color-disrupt-pastel: #D9D2E9;
+  --color-na-primary: #D57C19;
+  --color-na-pastel: #FFE6C5;
+  
+  --color-pu-primary: #C61819;
+  --color-pu-pastel: #FFD4D4;
+  
+  --color-pd-primary: #782A53;
+  --color-pd-pastel: #FBDAEC;
+  
+  --color-ac-primary: #4C85C7;
+  --color-ac-pastel: #C7E2FF;
+
+  --color-lgpd-primary: #9C1DFF;
+  --color-lgpd-pastel: #D9D2E9;
   
   --color-white: #ffffff;
   --color-gray-100: #f9fafb;
@@ -34,8 +37,8 @@
   --color-error: #d93025;
 
   
-  --brand-primary: var(--color-insight-primary);
-  --brand-pastel: var(--color-insight-pastel);
+  --brand-primary: var(--color-af-primary);
+  --brand-pastel: var(--color-af-pastel);
   
   --font-heading: 'Manrope', sans-serif;
   --font-body: 'DM Mono', monospace;
@@ -44,7 +47,7 @@
 body {
   margin: 0;
   font-family: var(--font-body);
-  background-color: var(--color-gray-100);
+  background-color: #E4E4E4;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

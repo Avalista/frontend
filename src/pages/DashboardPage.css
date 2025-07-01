@@ -33,18 +33,24 @@
 }
 
 .section-action-button {
-  background-color: var(--color-primary);
-  color: var(--color-white);
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: var(--color-white);
+  color: var(--brand-primary);
+  border: 1px solid var(--color-border);
   padding: 0.5rem 1rem;
-  border-radius: 8px;
+  border-radius: 0.5rem;
   text-decoration: none;
   font-family: var(--font-heading);
   font-weight: 600;
-  transition: background-color 0.2s;
+  transition: all 0.2s ease-in-out;
 }
 
 .section-action-button:hover {
-  background-color: #1a116b;
+  background-color: var(--brand-primary);
+  color: var(--color-white);
+  border-color: var(--brand-primary);
 }
 
 .projects-grid {
@@ -53,13 +59,10 @@
   gap: 1.5rem;
 }
 
-/* src/pages/DashboardPage.css */
-
-/* ... estilos anteriores de loading, metrics-grid, etc ... */
 
 .dashboard-grid-layout {
   display: grid;
-  grid-template-columns: 1fr; /* Padrão de 1 coluna para mobile */
+  grid-template-columns: 1fr; 
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -92,11 +95,40 @@
   background-color: var(--color-white);
   padding: 1.5rem;
   border-radius: 12px;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+  border: 1px solid var(--color-border);
 }
 
 .achievements-list {
   display: flex;
   flex-direction: column;
   gap: 0.75rem;
+}
+
+.projects-card {
+  background-color: var(--color-white);
+  border-radius: 12px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  border: 1px solid var(--color-border);
+}
+
+.section-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.section-title {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  margin: 0;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1.5rem;
 }

@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Plus } from 'lucide-react';
 import { DashboardLayout } from '../features/dashboard/DashboardLayout';
 import { Header } from '../features/dashboard/Header';
 import { MetricCard } from '../features/dashboard/MetricCard';
@@ -13,7 +14,6 @@ export function DashboardPage() {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    // Simula o carregamento dos dados
     const timer = setTimeout(() => setLoading(false), 1200);
     return () => clearTimeout(timer);
   }, []);
@@ -38,14 +38,23 @@ export function DashboardPage() {
               <MetricCard key={index} title={metric.title} value={metric.value} change={metric.change} isPositive={metric.isPositive} />
             ))}
           </div>
-          <div className="projects-section">
+          
+          <div className="projects-card">
             <div className="section-header">
               <h2 className="section-title">Meus Projetos</h2>
-              <Link to="/projects/create" className="section-action-button">Novo Projeto</Link>
+              <Link to="/projects/create" className="section-action-button">
+                <Plus size={16} />
+                Novo Projeto
+              </Link>
             </div>
             <div className="projects-grid">
               {mockProjects.map(project => (
-                <ProjectCard key={project.id} name={project.name} progress={project.progress} colorClass={project.color.replace('bg-', 'progress-')} />
+                <ProjectCard
+                  key={project.id}
+                  name={project.name}
+                  progress={project.progress}
+                  mainCategory={project.mainCategory}
+                />
               ))}
             </div>
           </div>
