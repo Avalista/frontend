@@ -9,7 +9,7 @@ import './Register.css';
 import { url } from 'inspector';
 
 function Register() {
-  const navigate = useNavigate(); // hook para navegação
+  const navigate = useNavigate(); 
 
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -69,43 +69,57 @@ function Register() {
 
   return (
     <div className="register-page">
-      <div className="register-container">
+      <div className="card register-container-layout">
         <img src={logo} alt="Logo da Avalista" className="register-logo" />
         <h1 className="register-title">Crie sua conta</h1>
-        <p className="register-greeting">Comece a avaliar seus projetos hoje mesmo.</p>
+        <p className="register-greeting">Comece a transformar suas avaliações.</p>
 
-        <form onSubmit={handleSubmit} className="register-form" noValidate>
-          {errors.api && <p className="error-message">{errors.api}</p>}
+        <form onSubmit={handleSubmit} className="register-form">
+          {errors && <p className="error-message-global">{errors}</p>}
 
           <div className="form-group">
-            <label htmlFor="name">Nome completo</label>
-            <input type="text" id="name" value={name} onChange={(e) => setName(e.target.value)} required />
-            {errors.name && <p className="field-error-message">{errors.name}</p>}
+            <label htmlFor="name" className="form-label">Seu nome</label>
+            <input
+              type="text"
+              id="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+              className="form-input"
+            />
           </div>
 
           <div className="form-group">
-            <label htmlFor="email">Seu e-mail</label>
-            <input type="email" id="email" value={email} onChange={(e) => setEmail(e.target.value)} required />
-            {errors.email && <p className="field-error-message">{errors.email}</p>}
+            <label htmlFor="email" className="form-label">Seu e-mail</label>
+            <input
+              type="email"
+              id="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              required
+              className="form-input"
+            />
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Crie uma senha</label>
-            <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} required />
-            {errors.password && <p className="field-error-message">{errors.password}</p>}
+            <label htmlFor="password" className="form-label">Crie uma senha</label>
+            <input
+              type="password"
+              id="password"
+              value={password}
+              onChange={(e) => setPassword(e.target.value)}
+              required
+              className="form-input"
+            />
           </div>
-          
-          <div className="form-group">
-            <label htmlFor="passwordConfirm">Confirme sua senha</label>
-            <input type="password" id="passwordConfirm" value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)} required />
-            {errors.passwordConfirm && <p className="field-error-message">{errors.passwordConfirm}</p>}
-          </div>
-          
-          <button type="submit" className="register-button">Criar conta</button>
 
-           <p className="navigation-link-text">
-                Já tem uma conta? <Link to="/login" className="navigation-link">Faça login</Link>
-            </p>
+          <button type="submit" className="btn btn-primary">
+            Cadastrar
+          </button>
+
+          <p className="navigation-link-text">
+            Já tem uma conta? <Link to="/login" className="navigation-link">Faça login</Link>
+          </p>
         </form>
       </div>
     </div>

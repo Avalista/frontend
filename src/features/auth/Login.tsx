@@ -14,11 +14,9 @@ function Login() {
   const [password, setPassword] = useState<string>('');
   const [error, setError] = useState<string | string[]>('');
 
-  // Dentro de src/features/auth/Login.tsx
-
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setError('');
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError('');
 
   try {
     const responseData = await loginUser({ email, password });
@@ -42,7 +40,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
 
   return (
     <div className="login-page">
-      <div className="login-container">
+      <div className="card login-container-layout">
         <img src={logo} alt="Logo da Avalista" className="login-logo" />
 
         <h1 className="login-title">Bem vindo de volta, ao Avalista!</h1>
@@ -52,7 +50,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
           {error && <p className="error-message">{error}</p>}
 
           <div className="form-group">
-            <label htmlFor="email">Seu e-mail</label>
+            <label htmlFor="email" className="form-label">Seu e-mail</label>
             <input
               type="email"
               id="email"
@@ -60,11 +58,12 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              className="form-input"
             />
           </div>
 
           <div className="form-group">
-            <label htmlFor="password">Sua senha</label>
+            <label htmlFor="password" className="form-label">Sua senha</label>
             <input
               type="password"
               id="password"
@@ -72,12 +71,14 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="form-input"
             />
           </div>
 
-          <button type="submit" className="login-button">
+          <button type="submit" className="btn btn-primary">
             Entrar
           </button>
+
           <p className="navigation-link-text">
             Não tem uma conta? <Link to="/register" className="navigation-link">Cadastre-se</Link>
           </p>
