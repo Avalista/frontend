@@ -1,55 +1,64 @@
-import { useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+import React, { useState } from 'react';
 import { createProject } from '../../api/projectApi';
 
-export function CreateProjectForm() {
+interface CreateProjectFormProps {
+  onSuccess: () => void;
+}
+
+export function CreateProjectForm({ onSuccess }: CreateProjectFormProps) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
-  const navigate = useNavigate();
+  const [error, setError] = useState('');
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = async (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
+    if (!name || !description) {
+      setError('Nome e descrição são obrigatórios.');
+      return;
+    }
+    setError('');
+    setIsSubmitting(true);
+    
     try {
       await createProject({ name, description });
-      navigate('/dashboard');
-    } catch (error) {
-      console.error("Erro ao criar projeto:", error);
+      alert('Projeto criado com sucesso!');
+      onSuccess();
+    } catch (err) {
+      setError('Ocorreu um erro ao criar o projeto.');
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
   return (
-    <div className="create-project-page">
-      <div className="card create-project-container">
-        <h1 className="create-project-title">Novo Projeto</h1>
-        <p className="create-project-subtitle">Dê um nome e descreva o objetivo da sua avaliação.</p>
-        
-        <form onSubmit={handleSubmit} className="project-form">
-          <div className="form-group">
-            <label htmlFor="name" className="form-label">Nome do Projeto</label>
-            <input
-              id="name"
-              type="text"
-              value={name}
-              onChange={(e) => setName(e.target.value)}
-              required
-              className="form-input"
-            />
-          </div>
-          <div className="form-group">
-            <label htmlFor="description" className="form-label">Descrição</label>
-            <textarea
-              id="description"
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              rows={4}
-              className="form-textarea"
-            />
-          </div>
-          <button type="submit" className="btn btn-primary" disabled={!name}>
-            Criar Projeto
-          </button>
-        </form>
+    <form onSubmit={handleSubmit}>
+      {error && <p className="alert alert-error">{error}</p>}
+      <div className="form-group">
+        <label htmlFor="projectName" className="form-label">Nome do Projeto</label>
+        <input 
+          id="projectName" 
+          type="text" 
+          value={name} 
+          onChange={(e) => setName(e.target.value)} 
+          placeholder="Ex: App de Finanças Pessoais"
+          className="form-input"
+        />
       </div>
-    </div>
+      <div className="form-group">
+        <label htmlFor="projectDescription" className="form-label">Descrição</label>
+        <textarea 
+          id="projectDescription" 
+          rows={5} 
+          value={description} 
+          onChange={(e) => setDescription(e.target.value)}
+          placeholder="Descreva o que este projeto faz, seus objetivos, etc."
+          className="form-textarea"
+        />
+      </div>
+      <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
+        {isSubmitting ? 'Criando...' : 'Criar Projeto'}
+      </button>
+    </form>
   );
 }
