@@ -14,18 +14,28 @@ export function DropdownMenu({ isOpen, onClose, onEdit, onDelete }: DropdownMenu
     return null;
   }
 
+  const handleEditClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onEdit();
+  };
+  
+  const handleDeleteClick = (e: React.MouseEvent) => {
+    e.preventDefault();
+    e.stopPropagation();
+    onDelete();
+  };
+
   return (
-    <div className="dropdown-overlay" onClick={onClose}>
-      <div className="dropdown-menu" onClick={(e) => e.stopPropagation()}>
-        <button onClick={onEdit} className="dropdown-item">
-          <Pencil className="dropdown-icon" size={16} />
-          Editar
-        </button>
-        <button onClick={onDelete} className="dropdown-item danger">
-          <Trash2 className="dropdown-icon" size={16} />
-          Excluir
-        </button>
-      </div>
+    <div className="dropdown-menu">
+      <button onClick={handleEditClick} className="dropdown-item">
+        <Pencil className="dropdown-icon" size={16} />
+        Editar
+      </button>
+      <button onClick={handleDeleteClick} className="dropdown-item danger">
+        <Trash2 className="dropdown-icon" size={16} />
+        Excluir
+      </button>
     </div>
   );
 }

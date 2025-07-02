@@ -5,6 +5,7 @@ import { ErrorPage } from './pages/ErrorPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { CreateProjectPage } from './pages/CreateProjectPage';
 import { DashboardPage } from './pages/DashboardPage';
+import { ProjectDetailPage } from './pages/ProjectDetailPage';
 import { ProtectedRoute } from './routes/ProtectedRoute';
 
 export const router = createBrowserRouter([
@@ -38,6 +39,10 @@ export const router = createBrowserRouter([
           {
             path: 'projects/create',
             element: <CreateProjectPage />,
+          },
+          {
+            path: 'projects/:projectId',
+            element: <ProjectDetailPage />,
           },
         ],
       },
