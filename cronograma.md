@@ -72,3 +72,5 @@ Este documento mapeia o progresso do desenvolvimento do **front-end** em relaç�
 
 | HU     | Funcionalidade                                  | Back-end | Front-end | Observações |
 |--------|-----------------------
+
+<!--tem que ver o que vai ser implementado pós entrega da monografia -->
