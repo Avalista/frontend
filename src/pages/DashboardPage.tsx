@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import { Plus } from 'lucide-react';
 import { DashboardLayout } from '../features/dashboard/DashboardLayout';
 import { Header } from '../features/dashboard/Header';
@@ -8,6 +9,7 @@ import { AchievementItem } from '../features/dashboard/AchievementItem';
 import { CategoryTable } from '../features/dashboard/CategoryTable';
 import { CreateProjectForm } from '../features/projects/CreateProjectForm';
 import { Modal } from '../components/ui/Modal';
+import { LoadingScreen } from '../components/ui/LoadingScreen';
 import { mockUser, mockMetrics, mockProjects, mockAchievements, mockCategories } from '../mocks/dashboard.mocks';
 import { useWindowSize } from '../hooks/useWindowSize';
 import './DashboardPage.css';
@@ -18,7 +20,7 @@ export function DashboardPage() {
   const [isCreateProjectModalOpen, setCreateProjectModalOpen] = useState(false);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 1200);
+    const timer = setTimeout(() => setLoading(false), 2500);
     return () => clearTimeout(timer);
   }, []);
 
@@ -38,7 +40,7 @@ export function DashboardPage() {
   if (loading) {
     return (
       <DashboardLayout>
-        <div className="loading-state">Carregando Dashboard...</div>
+        <LoadingScreen />
       </DashboardLayout>
     );
   }
@@ -47,7 +49,6 @@ export function DashboardPage() {
     <>
       <DashboardLayout>
         <Header user={mockUser} />
-
         <div className="dashboard-grid-layout">
           <div className="main-column">
             <div className="metrics-grid">
@@ -55,7 +56,6 @@ export function DashboardPage() {
                 <MetricCard key={index} {...metric} />
               ))}
             </div>
-            
             <div className="card">
               <div className="section-header">
                 <h2 className="section-title">Meus Projetos</h2>
@@ -77,7 +77,6 @@ export function DashboardPage() {
               </div>
             </div>
           </div>
-
           <div className="sidebar-column">
             <div className="card achievements-card-layout">
               <h3 className="card-title">Conquistas</h3>
