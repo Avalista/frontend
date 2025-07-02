@@ -1,133 +1,152 @@
+<p align="center">
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/react/react-original.svg" alt="React" width="40" />
+  &nbsp;&nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/typescript/typescript-original.svg" alt="TypeScript" width="40" />
+  &nbsp;&nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/vite/vite-original.svg" alt="Vite" width="40" />
+  &nbsp;&nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/css3/css3-original.svg" alt="CSS3" width="40" />
+  &nbsp;&nbsp;
+  <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/git/git-original.svg" alt="Git" width="40" />
+</p>
+
+
 # Avalista - Frontend
 
-Este repositório contém o código-fonte do front-end da aplicação **Avalista**, desenvolvido com **React**, **TypeScript** e **Vite**.
+Este repositório contém o código-fonte do front-end da aplicação **Avalista**. Desenvolvido com um ecossistema moderno de **React**, **TypeScript** e **Vite**, o projeto visa criar uma plataforma rica e intuitiva para a realização de avaliações heurísticas.
 
-## 🏠 Arquitetura do Projeto
+## 💡 A Filosofia do Projeto
 
-Para garantir organização, escalabilidade e manutenção facilitada, adotamos a **arquitetura baseada em funcionalidades** (*Feature-Based Architecture*). Em vez de agrupar arquivos por tipo (ex: componentes, serviços), eles são organizados por funcionalidade.
+**Avalista** é uma palavra que nasce da fusão de **avaliação** com **lista**, fazendo referência direta à **Lista Eureca 2024**, que serve de base para o nosso projeto.
+
+Nossa missão é criar uma ferramenta que transforme a avaliação de interfaces em um **processo acessível, educativo e motivador**, propondo um novo papel: o de **analista**, alguém que avalia com método, interpreta dados e propõe melhorias conscientes.
+
+---
+
+## 🛠️ Tecnologias e Ferramentas
+
+O front-end é construído com as seguintes tecnologias e bibliotecas principais:
+
+| Categoria       | Ferramenta           | Propósito                                                 |
+| :-------------- | :------------------- | :-------------------------------------------------------- |
+| **Base**        | React & TypeScript   | Construção da interface e tipagem estática.               |
+| **Build Tool**  | Vite                 | Servidor de desenvolvimento rápido e otimização da build. |
+| **Roteamento**  | React Router DOM     | Para navegação entre páginas (Single-Page Application).   |
+| **Requisições** | Axios                | Cliente HTTP para comunicação com a API do back-end.      |
+| **Ícones**      | Lucide React         | Biblioteca de ícones SVG, leve e customizável.            |
+| **Organograma** | React Flow           | Para a visualização de hierarquias (Lista Eureca).        |
+| **Estilização** | CSS Puro + Variáveis | Sistema de design customizado e de fácil manutenção.      |
+
+---
+
+## 🏗️ Arquitetura do Projeto
+
+Para garantir organização e escalabilidade, adotamos a **arquitetura baseada em funcionalidades** (*Feature-Based Architecture*).
 
 ```
 /src
 |
-|--- /api                # Camada de comunicação com o back-end
-|     |--- apiClient.ts      # Cliente Axios configurado com baseURL, interceptadores etc.
-|     |--- authApi.ts        # Funções da API relacionadas à autenticação
+|-- /api           # Camada de abstração para a comunicação com o back-end.
+|   |-- apiClient.ts   # Instância central do Axios com interceptadores.
+|   |-- authApi.ts     # Funções específicas da API de autenticação.
 |
-|--- /assets             # Arquivos estáticos (imagens, ícones, SVGs)
+|-- /assets        # Arquivos estáticos como imagens e SVGs.
 |
-|--- /components         # Componentes reutilizáveis
-|     |--- /ui               # Componentes visuais (Input, Button, Modal, etc.)
+|-- /components
+|   |-- /ui          # Componentes "burros", puros e reutilizáveis (Modal, DropdownMenu).
 |
-|--- /features           # Cada pasta representa uma funcionalidade
-|     |--- /auth             # Exemplo: funcionalidades de autenticação
-|           |--- Login.tsx       # Componente com lógica e UI da feature
+|-- /features      # O coração da arquitetura. Cada pasta é uma funcionalidade completa.
+|   |-- /auth        # Contém os componentes e lógica de Login e Cadastro.
+|   |-- /dashboard   # Contém todos os sub-componentes do Dashboard (Sidebar, Cards, etc).
 |
-|--- /mocks              # Dados falsos para simulação de respostas da API
-|     |--- auth.mocks.ts
+|-- /hooks         # Hooks customizados para encapsular lógicas reutilizáveis.
+|   |-- useDropdown.ts # Lógica para abrir/fechar menus dropdown.
 |
-|--- /pages              # Páginas completas da aplicação
-|     |--- LoginPage.tsx     # Monta a página com base nos componentes de features
+|-- /mocks         # Dados falsos para desenvolvimento offline.
 |
-|--- /routes             # Configuração das rotas com React Router
+|-- /pages         # Componentes "montadores", que representam as páginas da aplicação.
 |
-|--- /styles             # Estilos globais, reset.css, variáveis CSS, etc.
+|-- /routes        # Configuração das rotas e componentes de proteção.
 |
-|--- /types              # Interfaces e tipos TypeScript compartilhados
-|     |--- auth.types.ts
+|-- /styles        # Arquivos de estilo globais.
+|   |-- index.css        # Variáveis CSS globais, fontes e reset.
+|   |-- design-system.css # Classes de componentes reutilizáveis.
 |
-|--- App.tsx             # Configura o roteador e estrutura principal da aplicação
-|--- main.tsx            # Ponto de entrada do React
+|-- /types         # Interfaces e tipos TypeScript compartilhados.
+|
+|--- App.tsx        # Definição das rotas da aplicação com createBrowserRouter.
+|--- main.tsx       # Ponto de entrada que renderiza a aplicação na DOM.
 ```
 
 ---
 
-## ⚒️ Configuração do Ambiente
+## 🎨 Sistema de Design (Design System)
 
-### ⚡ Pré-requisitos
+Construímos um sistema de design coeso para garantir consistência visual. Ele é baseado em variáveis CSS globais e classes de componentes reutilizáveis.
 
-* [Node.js](https://nodejs.org/) (gerenciado via `nvm-windows`)
-* [Git](https://git-scm.com/)
+### Paleta de Cores Mutante
 
-### ✅ Passos de Instalação
+A identidade do Avalista é flexível. Cada tema de cor representa uma categoria de avaliação, com uma cor **primária** (vibrante) e uma **pastel** (suporte).
 
-```bash
-# 1. Clone o repositório
-git clone https://github.com/Avalista/frontend.git
+| 🎭 Nome do Tema         | 🎯 Cor Primária | 🌸 Cor Pastel |
+| :---------------------- | :-------------- | :------------ |
+| **Funcional (AF)**      | `#070248`       | `#CECDFF`     |
+| **Comunicação (CO)**    | `#36A08E`       | `#D5FFF9`     |
+| **Formação (FM)**       | `#4DAA00`       | `#E1FCCF`     |
+| **Navegação (NA)**      | `#D57C19`       | `#FFE6C5`     |
+| **Usuário (PU)**        | `#C61819`       | `#FFD4D4`     |
+| **Dispositivo (PD)**    | `#782A53`       | `#FBDAEC`     |
+| **Acessibilidade (AC)** | `#4C85C7`       | `#C7E2FF`     |
+| **LGPD**                | `#9C1DFF`       | `#D9D2E9`     |
 
-# 2. Acesse a pasta
-cd frontend
+### Tipografia
 
-# 3. Ative a versão correta do Node.js
-nvm use 20.16.0
+* **Títulos e Cabeçalhos:** `Manrope`
+* **Corpo de Texto e Inputs:** `DM Mono`
 
-# 4. Instale as dependências
-npm install
+### Componentes de Base (Classes Globais)
 
-# 5. Rode o servidor de desenvolvimento
-npm run dev
-```
+Definimos classes reutilizáveis em `design-system.css` para os elementos mais comuns:
 
-A aplicação estará disponível em `http://localhost:5173`
-
----
-
-## 📈 Comandos Principais
-
-| Comando                | Descrição                               |
-| ---------------------- | --------------------------------------- |
-| `npm run dev`          | Inicia o servidor de desenvolvimento    |
-| `npm install <pacote>` | Instala uma nova dependência do projeto |
-| `npm run build`        | Gera a build de produção                |
-| `npm run lint`         | Executa o linter (caso configurado)     |
-
-Para rodar o **back-end** localmente, siga as instruções na página do repositório [Avalista/backend](https://github.com/Avalista/backend).
+* **`.card`**: Estilo base para todos os painéis e contêineres.
+* **`.btn`**: Classe base para botões, com reset e transições.
+* **`.btn-primary`**: Botão principal (`brand-primary`).
+* **`.btn-secondary`**: Botão secundário com borda.
+* **`.form-group`, `.form-label`, `.form-input`, `.form-textarea`**: Classes para formulários.
 
 ---
 
-## 🧠 Conceitos Importantes & Boas Práticas
+## ⚙️ Guia para Desenvolvedores
 
-### 1. `nvm-windows`
+### Configuração do Ambiente
 
-Lembre-se de ativar o Node com:
+1. Clone o repositório: `git clone https://github.com/Avalista/frontend.git`
+2. Acesse a pasta: `cd frontend`
+3. Ative a versão correta do Node.js: `nvm use`
+4. Instale as dependências: `npm install`
 
-```bash
-nvm use 20.16.0
-```
+### Comandos Principais
 
-### 2. Variáveis de Ambiente (`.env`)
+* **Iniciar o servidor de desenvolvimento:**
 
-Informações sensíveis devem estar no `.env` (exemplo: `.env.example`). Nunca envie esse arquivo ao GitHub.
+  ```bash
+  npm run dev
+  ```
+* **Instalar uma nova dependência:**
 
-### 3. API & Mocks
+  ```bash
+  npm install nome-do-pacote
+  ```
 
-Chamadas de API ficam isoladas na pasta `/api`. Durante o desenvolvimento, você pode simular respostas usando arquivos em `/mocks`, acelerando o desenvolvimento da interface.
+### Conceitos Importantes do Projeto
 
-### 4. Commits Semânticos
+* **O Interruptor de API (Real vs. Mock):** Use o `.env`:
 
-Use o padrão:
+  * `VITE_API_MODE=mock`: Usa dados da pasta `/mocks`
+  * `VITE_API_MODE=real` ou ausente: Usa a API real
 
-```bash
-<tipo>(escopo): mensagem curta
-```
-
-**Exemplos:**
-
-* `feat(auth): adiciona lógica de login`
-* `fix(routes): corrige redirecionamento pós-login`
-* `refactor(ui): melhora estrutura do Modal`
-
-### 5. Fluxo de Branches
-
-```bash
-# Criar uma nova branch para uma feature
-git switch -c feat/nome-da-feature
-
-# Depois dos commits
-git push -u origin feat/nome-da-feature
-```
+* **Padrão "Visualizar e Editar":** Em telas como Perfil, usamos um estado `isEditing` para alternar entre visualização e edição dos dados.
 
 ---
 
-## 🔧 Suporte
-
-Para dúvidas, sugestões ou problemas, abra uma [issue](https://github.com/Avalista/frontend/issues) ou entre em contato com os mantenedores do projeto.
+Se você chegou até aqui: parabéns, você já é meio Avalista. 🚀
