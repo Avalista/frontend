@@ -1,6 +1,6 @@
 # 📋 Status de Desenvolvimento: Front-end vs. Back-end Avalista
 
-Este documento mapeia o progresso do desenvolvimento do **front-end** em relação às **Histórias de Usuário (HUs)** concluídas pela equipe de **back-end**.
+Este documento mapeia o progresso do desenvolvimento do **front-end** em relação às **Histórias de Usuário (HUs)** concluídas pelo de **back-end**.
 
 ---
 
