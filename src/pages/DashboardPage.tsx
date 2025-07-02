@@ -8,20 +8,37 @@ import { ProjectCard } from '../features/dashboard/ProjectCard';
 import { AchievementItem } from '../features/dashboard/AchievementItem';
 import { CategoryTable } from '../features/dashboard/CategoryTable';
 import { mockUser, mockMetrics, mockProjects, mockAchievements, mockCategories } from '../mocks/dashboard.mocks';
+import { useWindowSize } from '../hooks/useWindowSize';
 import './DashboardPage.css';
 
 export function DashboardPage() {
   const [loading, setLoading] = useState(true);
+  const { width } = useWindowSize();
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 1200);
     return () => clearTimeout(timer);
   }, []);
 
+  const getVisibleProjectsCount = () => {
+    if (width === undefined) {
+      return 8;
+    }
+    if (width > 1440) {
+      return 8;
+    }
+    if (width > 1024) {
+      return 6;
+    }
+    return 4;
+  };
+
+  const visibleProjects = mockProjects.slice(0, getVisibleProjectsCount());
+
   if (loading) {
     return (
       <DashboardLayout>
-        <div className="loading-state"> Iniciando modo Avalista...</div>
+        <div className="loading-state">Carregando Dashboard...</div>
       </DashboardLayout>
     );
   }
@@ -31,24 +48,23 @@ export function DashboardPage() {
       <Header user={mockUser} />
 
       <div className="dashboard-grid-layout">
-
         <div className="main-column">
           <div className="metrics-grid">
             {mockMetrics.map((metric, index) => (
-              <MetricCard key={index} title={metric.title} value={metric.value} change={metric.change} isPositive={metric.isPositive} />
+              <MetricCard key={index} {...metric} />
             ))}
           </div>
           
-          <div className="projects-card">
+          <div className="card">
             <div className="section-header">
               <h2 className="section-title">Meus Projetos</h2>
               <Link to="/projects/create" className="section-action-button">
-                <Plus size={16} />
+                <Plus size={18} strokeWidth={3} />
                 Novo Projeto
               </Link>
             </div>
             <div className="projects-grid">
-              {mockProjects.map(project => (
+              {visibleProjects.map(project => (
                 <ProjectCard
                   key={project.id}
                   name={project.name}
@@ -61,7 +77,7 @@ export function DashboardPage() {
         </div>
 
         <div className="sidebar-column">
-          <div className="achievements-card">
+          <div className="card achievements-card-layout">
             <h3 className="card-title">Conquistas</h3>
             <div className="achievements-list">
               {mockAchievements.map(achievement => <AchievementItem key={achievement.id} {...achievement} />)}
@@ -69,7 +85,6 @@ export function DashboardPage() {
           </div>
           <CategoryTable categories={mockCategories} />
         </div>
-
       </div>
     </DashboardLayout>
   );

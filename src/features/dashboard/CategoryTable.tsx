@@ -9,7 +9,7 @@ interface Category {
 
 export function CategoryTable({ categories }: { categories: Category[] }) {
   return (
-    <div className="category-table-card">
+    <div className="card">
       <h3 className="card-title">Top Categorias</h3>
       <div className="table-content">
         {categories.map((category, index) => (

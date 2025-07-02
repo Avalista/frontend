@@ -1,3 +1,33 @@
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.project-card-layout {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  z-index: 1;
+  animation: fadeInUp 0.5s ease-out both;
+}
+
+.project-card-layout:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.08);
+}
+
+.project-card-layout.is-active {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
+  z-index: 10;
+}
+
 .project-card {
   background-color: var(--card-bg-color, var(--color-white));
   padding: 1.25rem;

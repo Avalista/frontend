@@ -5,7 +5,6 @@ import { ErrorPage } from './pages/ErrorPage';
 import { ProfilePage } from './pages/ProfilePage';
 import { CreateProjectPage } from './pages/CreateProjectPage';
 import { DashboardPage } from './pages/DashboardPage';
-
 import { ProtectedRoute } from './routes/ProtectedRoute';
 
 export const router = createBrowserRouter([
@@ -15,18 +14,31 @@ export const router = createBrowserRouter([
     children: [
       {
         index: true,
-        element: <Navigate to="/dashboard" replace />, 
+        element: <Navigate to="/dashboard" replace />,
       },
-      
-      { path: 'login', element: <LoginPage /> },
-      { path: 'register', element: <RegisterPage /> },
-      
+      {
+        path: 'login',
+        element: <LoginPage />,
+      },
+      {
+        path: 'register',
+        element: <RegisterPage />,
+      },
       {
         element: <ProtectedRoute />,
         children: [
-          { path: 'dashboard', element: <DashboardPage /> }, 
-          { path: 'profile', element: <ProfilePage /> },
-          { path: 'projects/create', element: <CreateProjectPage /> },
+          {
+            path: 'dashboard',
+            element: <DashboardPage />,
+          },
+          {
+            path: 'profile',
+            element: <ProfilePage />,
+          },
+          {
+            path: 'projects/create',
+            element: <CreateProjectPage />,
+          },
         ],
       },
     ],

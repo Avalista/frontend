@@ -3,56 +3,46 @@ import { useNavigate, Link } from 'react-router-dom';
 import { loginUser } from '../../api/authApi';
 import { isAxiosError } from 'axios';
 import { ApiErrorResponse } from '../../types/auth.types';
-
 import logo from '../../assets/logo-horizontal-laranja.svg';
 import './Login.css';
 
-function Login() {
-  
-  const navigate = useNavigate(); 
-  const [email, setEmail] = useState<string>('');
-  const [password, setPassword] = useState<string>('');
-  const [error, setError] = useState<string | string[]>('');
+export function Login() {
+  const navigate = useNavigate();
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+  const [error, setError] = useState('');
 
-  // Dentro de src/features/auth/Login.tsx
-
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  setError('');
-
-  try {
-    const responseData = await loginUser({ email, password });
-    console.log('Login bem-sucedido!', responseData);
-
-    localStorage.setItem('authToken', responseData.access_token);
-    navigate('/dashboard'); 
-
-  } catch (err) {
-    if (isAxiosError<ApiErrorResponse>(err) && err.response) {
-      const errorMessage = Array.isArray(err.response.data.message)
-        ? err.response.data.message.join(', ')
-        : err.response.data.message;
-      setError(errorMessage);
-    } else {
-      console.error(err);
-      setError('Não foi possível fazer o login. Verifique sua conexão.');
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setError('');
+    
+    try {
+      const responseData = await loginUser({ email, password });
+      localStorage.setItem('authToken', responseData.access_token);
+      navigate('/dashboard');
+    } catch (err) {
+      if (isAxiosError<ApiErrorResponse>(err) && err.response) {
+        const errorMessage = Array.isArray(err.response.data.message)
+          ? err.response.data.message.join(', ')
+          : err.response.data.message;
+        setError(errorMessage);
+      } else {
+        setError('Não foi possível fazer o login.');
+      }
     }
-  }
-};
+  };
 
   return (
     <div className="login-page">
-      <div className="login-container">
+      <div className="card login-container-layout">
         <img src={logo} alt="Logo da Avalista" className="login-logo" />
-
         <h1 className="login-title">Bem vindo de volta, ao Avalista!</h1>
-        <p className="login-greeting">Um texto de saudacao</p>
+        <p className="login-greeting">Insira seus dados para continuar.</p>
 
         <form onSubmit={handleSubmit} className="login-form">
-          {error && <p className="error-message">{error}</p>}
-
+          {error && <p className="error-message-global">{error}</p>}
           <div className="form-group">
-            <label htmlFor="email">Seu e-mail</label>
+            <label htmlFor="email" className="form-label">Seu e-mail</label>
             <input
               type="email"
               id="email"
@@ -60,11 +50,11 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               required
+              className="form-input"
             />
           </div>
-
           <div className="form-group">
-            <label htmlFor="password">Sua senha</label>
+            <label htmlFor="password" className="form-label">Sua senha</label>
             <input
               type="password"
               id="password"
@@ -72,10 +62,10 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
               value={password}
               onChange={(e) => setPassword(e.target.value)}
               required
+              className="form-input"
             />
           </div>
-
-          <button type="submit" className="login-button">
+          <button type="submit" className="btn btn-primary">
             Entrar
           </button>
           <p className="navigation-link-text">
@@ -86,5 +76,3 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     </div>
   );
 }
-
-export default Login;
