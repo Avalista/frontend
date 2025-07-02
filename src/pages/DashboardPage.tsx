@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import { Plus } from 'lucide-react';
 import { DashboardLayout } from '../features/dashboard/DashboardLayout';
 import { Header } from '../features/dashboard/Header';
 import { MetricCard } from '../features/dashboard/MetricCard';
@@ -21,13 +22,13 @@ export function DashboardPage() {
 
   const getVisibleProjectsCount = () => {
     if (width === undefined) {
-      return 8; 
+      return 8;
     }
     if (width > 1440) {
-      return 8; 
+      return 8;
     }
     if (width > 1024) {
-      return 6; 
+      return 6;
     }
     return 4;
   };
@@ -47,21 +48,24 @@ export function DashboardPage() {
       <Header user={mockUser} />
 
       <div className="dashboard-grid-layout">
-
         <div className="main-column">
           <div className="metrics-grid">
             {mockMetrics.map((metric, index) => (
               <MetricCard key={index} {...metric} />
             ))}
           </div>
-          <div className="projects-section">
+          
+          <div className="card">
             <div className="section-header">
               <h2 className="section-title">Meus Projetos</h2>
-              <Link to="/projects/create" className="section-action-button">Novo Projeto</Link>
+              <Link to="/projects/create" className="section-action-button">
+                <Plus size={18} strokeWidth={3} />
+                Novo Projeto
+              </Link>
             </div>
             <div className="projects-grid">
               {visibleProjects.map(project => (
-                <ProjectCard 
+                <ProjectCard
                   key={project.id}
                   name={project.name}
                   progress={project.progress}
@@ -73,7 +77,7 @@ export function DashboardPage() {
         </div>
 
         <div className="sidebar-column">
-          <div className="achievements-card">
+          <div className="card achievements-card-layout">
             <h3 className="card-title">Conquistas</h3>
             <div className="achievements-list">
               {mockAchievements.map(achievement => <AchievementItem key={achievement.id} {...achievement} />)}
@@ -81,7 +85,6 @@ export function DashboardPage() {
           </div>
           <CategoryTable categories={mockCategories} />
         </div>
-
       </div>
     </DashboardLayout>
   );
