@@ -68,6 +68,7 @@ export function DashboardPage() {
                 {visibleProjects.map(project => (
                   <ProjectCard
                     key={project.id}
+                    id={project.id}
                     name={project.name}
                     progress={project.progress}
                     mainCategory={project.mainCategory}

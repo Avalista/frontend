@@ -1,0 +1,24 @@
+.heuristic-node {
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  border: 1px solid var(--color-border);
+  min-width: 180px;
+  text-align: center;
+}
+
+.node-type-category {
+  background-color: var(--brand-primary);
+  color: var(--color-white);
+}
+
+.node-type-directive {
+  background-color: var(--color-white);
+  color: var(--brand-primary);
+}
+
+.node-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  font-size: 0.875rem;
+  margin: 0;
+}
