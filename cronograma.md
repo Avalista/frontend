@@ -1,9 +1,5 @@
 # 📋 Status de Desenvolvimento: Front-end vs. Back-end Avalista
 
-**Data do Relatório:** 01/07/2025  
-**Autora:** Mila Gama  
-**Projeto:** Avalista  
-
 Este documento mapeia o progresso do desenvolvimento do **front-end** em relação às **Histórias de Usuário (HUs)** concluídas pela equipe de **back-end**.
 
 ---
