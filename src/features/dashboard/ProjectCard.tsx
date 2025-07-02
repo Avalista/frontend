@@ -79,12 +79,12 @@ export function ProjectCard({ id, name, progress, mainCategory }: ProjectCardPro
 
       <div className="card-body">
         <h3 className="card-title">{name}</h3>
-        <div className="progress-bar-container">
-          <div className="progress-bar" style={{ width: `${progress}%` }}></div>
-        </div>
         <div className="progress-info">
           <span className="progress-label">Progresso</span>
           <span className="progress-percentage">{progress}%</span>
+        </div>
+        <div className="progress-bar-container">
+          <div className="progress-bar" style={{ width: `${progress}%` }}></div>
         </div>
       </div>
     </Link>
