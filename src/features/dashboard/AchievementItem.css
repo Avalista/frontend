@@ -1,0 +1,31 @@
+.achievement-item {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.5rem;
+  border-radius: 8px;
+}
+.achievement-icon {
+  width: 28px;
+  height: 28px;
+  flex-shrink: 0; 
+}
+.achievement-name {
+  font-family: var(--font-heading);
+  font-weight: 600;
+}
+
+.achievement-item.locked .achievement-icon {
+  color: #d1d5db; 
+}
+.achievement-item.locked .achievement-name {
+  color: #9ca3af; 
+  text-decoration: line-through;
+}
+.achievement-item.achieved .achievement-icon {
+  color: #facc15; 
+  fill: #facc15;
+}
+.achievement-item.achieved .achievement-name {
+  color: #1f2937; 
+}

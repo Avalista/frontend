@@ -1,0 +1,48 @@
+/* src/features/dashboard/ProjectsSection.css */
+.projects-section-card {
+ background-color: var(--color-white);
+ border-radius: 16px;
+ padding: 2rem;
+ box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+ margin-bottom: 2rem; /* Espaçamento abaixo da seção */
+}
+
+.projects-header {
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ margin-bottom: 1.5rem;
+}
+
+.projects-title {
+ font-family: var(--font-heading);
+ font-weight: 700;
+ font-size: 1.5rem;
+ color: var(--color-gray-900);
+ margin: 0;
+}
+
+.add-project-button {
+ background-color: var(--brand-primary);
+ color: var(--color-white);
+ font-family: var(--font-body);
+ font-weight: 500;
+ border: none;
+ padding: 0.75rem 1.25rem;
+ border-radius: 8px;
+ cursor: pointer;
+ display: flex;
+ align-items: center;
+ gap: 0.5rem;
+ transition: background-color 0.2s ease;
+}
+
+.add-project-button:hover {
+ background-color: var(--brand-primary-darker); /* Se você tiver uma cor mais escura definida */
+}
+
+.projects-list {
+ display: grid;
+ grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+ gap: 1.5rem;
+}

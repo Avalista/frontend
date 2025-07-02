@@ -1,0 +1,47 @@
+.table-card-title {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--color-gray-900);
+  margin-bottom: 1rem;
+}
+
+.table-content {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.table-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr 1fr;
+  align-items: center;
+  gap: 1rem;
+  font-size: 0.875rem;
+}
+
+.category-name {
+  font-weight: 600;
+  color: #374151;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.popularity-bar-container {
+  background-color: var(--color-gray-200);
+  border-radius: 9999px;
+  height: 8px;
+}
+
+.popularity-bar {
+  background-color: #3b82f6;
+  height: 100%;
+  border-radius: 9999px;
+}
+
+.category-sales {
+  font-weight: 600;
+  color: var(--color-success);
+  text-align: right;
+}

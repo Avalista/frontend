@@ -3,7 +3,7 @@ import { LoginCredentials, RegisterCredentials, LoginSuccessResponse } from '../
 
 export const loginUser = async (credentials: LoginCredentials): Promise<LoginSuccessResponse> => {
   const response = await apiClient.post<LoginSuccessResponse>('/signIn', credentials);
-  return response.data; 
+  return response.data;
 };
 
 export const registerUser = async (credentials: Omit<RegisterCredentials, 'passwordConfirm'>): Promise<any> => {

@@ -22,13 +22,13 @@ export interface UserProfile {
   id: string;
   name: string;
   email: string;
+  funcao: string;
   avatarUrl: string;
   badges: {
     id: string;
     name: string;
     imageUrl: string;
   }[];
-
   bio: string;
   stats: {
     projectsEvaluated: number;
@@ -41,4 +41,4 @@ export interface UserProfile {
   }[];
 }
 
-export type UserProfileUpdate = Partial<Pick<UserProfile, 'name' | 'bio' | 'avatarUrl'>>;
+export type UserProfileUpdate = Partial<Pick<UserProfile, 'name' | 'bio' | 'avatarUrl' | 'funcao'>>;

@@ -1,0 +1,26 @@
+.dashboard-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.header-title {
+  font-family: var(--font-heading);
+  font-size: 2rem; 
+  font-weight: 800;
+  color: var(--color-primary);
+}
+
+.header-subtitle {
+  color: #6b7280; 
+  margin-top: 0.25rem;
+}
+
+.header-avatar {
+  width: 56px;  
+  height: 56px;
+  border-radius: 50%;
+  border: 2px solid var(--color-white);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
