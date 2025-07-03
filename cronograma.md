@@ -1,7 +1,5 @@
 # 📋 Status de Desenvolvimento: Front-end vs. Back-end Avalista
 
-**Data do Relatório:** 03/07/2025
-
 Este documento mapeia o progresso do desenvolvimento do **front-end** em relação às **Histórias de Usuário (HUs)** concluídas pelo **back-end**.
 
 ---
@@ -24,10 +22,10 @@ Este documento mapeia o progresso do desenvolvimento do **front-end** em relaç�
 | HU001 | Criar conta | ✅ | ✅ | Página `Register.tsx` pronta. |
 | HU002 | Fazer login | ✅ | ✅ | Página `Login.tsx` funcional e conectada. |
 | HU004 | Criar projeto | ✅ | ✅ | Implementado como modal no dashboard. |
-| HU005 | Visualizar meus projetos | ✅ | 🟡 | Exibe no dashboard. Página dedicada (`/projects`) iniciada. |
-| HU006 | Detalhar meu projeto | ✅ | ✅ | Página de detalhes com layout e componentes pronta. |
+| HU005 | Visualizar meus projetos | ✅ | 🟡 | Exibe no dashboard, falta página dedicada. |
+| HU006 | Detalhar meu projeto | ✅ | ✅ | Página de detalhes com organograma funcional. |
 | HU009 | Cadastrar uma tela | ✅ | ✅ | Modal implementado na pág. de detalhes do projeto. |
-| HU012 | Iniciar avaliação individual | ⚫️ | ⚫️ | Interface base da anotação criada, mas aguardando API. |
+| HU012 | Iniciar avaliação individual | ⚫️ | ⚫️ | Interface base da anotação criada, aguardando API. |
 | HU013 | Adicionar problema à avaliação| ⚫️ | ⚫️ | Pendente. |
 | HU014 | Visualizar progresso por tela | ⚫️ | ⚫️ | Pendente. |
 | HU015 | Visualizar progresso por categoria| ⚫️ | ⚫️ | Pendente. |
@@ -45,7 +43,7 @@ Este documento mapeia o progresso do desenvolvimento do **front-end** em relaç�
 | HU047 | Adicionar problema na avaliação final | ⚫️ | ⚫️ | Pendente. |
 | HU022 | Editar problemas para avaliação final | ⚫️ | ⚫️ | Pendente. |
 | HU008 | Adicionar avaliadores ao projeto | ⚫️ | ⚫️ | UI do modal pronta, aguardando API. |
-| HU028 | Listar categorias | ⚫️ | ⚫️ | UI da tabela pronta no dashboard, aguardando API. |
+| HU028 | Listar categorias | ⚫️ | ⚫️ | UI da tabela no dashboard pronta, aguardando API. |
 | HU033 | Listar diretriz | ⚫️ | ⚫️ | Pendente. |
 | HU014 | Visualizar avaliações individuais | ⚫️ | ⚫️ | Pendente. |
 | HU018 | Visualizar avaliações individuais | ⚫️ | ⚫️ | Pendente. |
@@ -57,14 +55,14 @@ Este documento mapeia o progresso do desenvolvimento do **front-end** em relaç�
 
 | HU | Funcionalidade | Back-end | Front-end | Observações |
 | :--- | :--- | :---: | :---: | :--- |
-| HU026 | Cadastrar categoria | ✅ | 🔵 | Back-end pronto. Pode ser implementado. |
-| HU027 | Editar categoria | ✅ | 🔵 | Back-end pronto. Pode ser implementado. |
-| HU029 | Detalhar categoria | ✅ | 🔵 | Back-end pronto. Pode ser implementado. |
-| HU030 | Deletar categoria | ✅ | 🔵 | Back-end pronto. Pode ser implementado. |
-| HU031 | Cadastrar diretriz | ⚫️ | ⚫️ | Pendente. |
-| HU032 | Editar diretriz | ⚫️ | ⚫️ | Pendente. |
-| HU034 | Detalhar diretriz | ⚫️ | ⚫️ | Pendente. |
-| HU035 | Deletar diretriz | ⚫️ | ⚫️ | Pendente. |
+| HU026 | Cadastrar categoria | ✅ | 🔵 | Back-end pronto. |
+| HU027 | Editar categoria | ✅ | 🔵 | Back-end pronto. |
+| HU029 | Detalhar categoria | ✅ | 🔵 | Back-end pronto. |
+| HU030 | Deletar categoria | ✅ | 🔵 | Back-end pronto. |
+| HU031 | Cadastrar diretriz | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
+| HU032 | Editar diretriz | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
+| HU034 | Detalhar diretriz | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
+| HU035 | Deletar diretriz | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
 
 ---
 
@@ -72,7 +70,7 @@ Este documento mapeia o progresso do desenvolvimento do **front-end** em relaç�
 
 | HU | Funcionalidade | Back-end | Front-end | Observações |
 | :--- | :--- | :---: | :---: | :--- |
-| HU003 | Visualizar meu perfil | ⚫️ | ⚫️ | Front-end pronto (mock), API a validar/finalizar. |
+| HU003 | Visualizar meu perfil | ⚫️ | ⚫️ | Front-end pronto (mock), API a validar. |
 | HU007 | Editar meu projeto | ⚫️ | ⚫️ | Modal de edição pronto, aguardando API. |
 | HU010 | Editar um fluxo | ⚫️ | ⚫️ | Pendente. |
 | HU011 | Excluir um fluxo | ⚫️ | ⚫️ | Pendente. |
@@ -99,9 +97,9 @@ Este documento mapeia o progresso do desenvolvimento do **front-end** em relaç�
 | :--- | :--- | :---: | :---: | :--- |
 | HU036 | Sugerir uma nova categoria | ⚫️ | ⚫️ | Pendente. |
 | HU037 | Sugerir uma nova diretriz | ⚫️ | ⚫️ | Pendente. |
-| HU038 | Listar sugestões de categorias | ⚫️ | ⚫️ | Pendente. |
-| HU039 | Listar sugestões de diretrizes | ⚫️ | ⚫️ | Pendente. |
-| HU040 | Analisar sugestão de categoria | ⚫️ | ⚫️ | Pendente. |
-| HU041 | Analisar sugestão de diretriz | ⚫️ | ⚫️ | Pendente. |
+| HU038 | Listar sugestões de categorias | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
+| HU039 | Listar sugestões de diretrizes | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
+| HU040 | Analisar sugestão de categoria | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
+| HU041 | Analisar sugestão de diretriz | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
 | HU042 | Visualizar listas | ⚫️ | ⚫️ | Pendente. |
 | HU047 | Detalhar lista | ⚫️ | ⚫️ | Pendente. |
