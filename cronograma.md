@@ -24,7 +24,7 @@ Este documento mapeia o progresso do desenvolvimento do **front-end** em relaç�
 | HU004 | Criar projeto | ✅ | ✅ | Implementado como modal no dashboard. |
 | HU005 | Visualizar meus projetos | ✅ | 🟡 | Exibe no dashboard, falta página dedicada. |
 | HU006 | Detalhar meu projeto | ✅ | ✅ | Página de detalhes com organograma funcional. |
-| HU009 | Cadastrar uma tela | ✅ | 🔵 | A fazer. Depende da HU006. |
+| HU009 | Cadastrar uma tela | ✅ | ✅ | Implementado como modal na pág. de detalhes. |
 | HU012+| Avaliações individuais | ⚫️ | ⚫️ | Aguardando back-end. |
 
 ---
@@ -33,7 +33,9 @@ Este documento mapeia o progresso do desenvolvimento do **front-end** em relaç�
 
 | HU | Funcionalidade | Back-end | Front-end | Observações |
 | :--- | :--- | :---: | :---: | :--- |
-| Todas | Avaliação final e diretrizes | ⚫️ | ⚫️ | Não iniciadas, pendentes do back-end. |
+| HU008 | Adicionar avaliadores | ⚫️ | 🟡 | Modal de adicionar membros pronto, aguardando API. |
+| HU021+| Avaliação final e diretrizes | ⚫️ | ⚫️ | Não iniciadas, pendentes do back-end. |
+
 
 ---
 
@@ -56,10 +58,8 @@ Este documento mapeia o progresso do desenvolvimento do **front-end** em relaç�
 
 ---
 
-## 🚀 O que vem depois? (Pós-Monografia)
+## ✅ Sprints 5 & 6
 
-Com base nas HUs restantes, estas são as grandes áreas de funcionalidades futuras para o Avalista:
-
-* **Gamificação:** Atribuição e visualização de emblemas e estatísticas detalhadas (HUs da Sprint 5).
-* **Colaboração e Comunidade:** Sistema de sugestão de categorias e diretrizes (HUs da Sprint 6).
-* **Gerenciamento Avançado:** Funções de administrador para analisar sugestões e visualizar todos os projetos e avaliadores.
+| HU | Funcionalidade | Back-end | Front-end | Observações |
+| :--- | :--- | :---: | :---: | :--- |
+| Todas | Gamificação e Sugestões | ⚫️ | ⚫️ | Aguardando back-end. |
