@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { Edit3 } from 'lucide-react';
 import { DashboardLayout } from '../features/dashboard/DashboardLayout';
-import { Project } from '../types/project.types';
-import { mockProjectDetail, mockAllUsers } from '../mocks/projects.mocks';
+import { Project, Screen } from '../types/project.types';
+import { mockProjectDetail } from '../mocks/projects.mocks';
 import { ProjectHeader } from '../features/projects/detail/ProjectHeader';
 import { ProjectStats } from '../features/projects/detail/ProjectStats';
 import { MembersList } from '../features/projects/detail/MembersList';
@@ -10,7 +11,7 @@ import { ScreenList } from '../features/projects/detail/ScreenList';
 import { Modal } from '../components/ui/Modal';
 import { ProjectForm } from '../features/projects/ProjectForm';
 import { AddMemberForm } from '../features/projects/detail/AddMemberForm';
-import { Edit3 } from 'lucide-react';
+import { AddScreenForm } from '../features/projects/detail/AddScreenForm';
 import './ProjectDetailPage.css';
 
 export function ProjectDetailPage() {
@@ -18,6 +19,7 @@ export function ProjectDetailPage() {
   const [project, setProject] = useState<Project | null>(null);
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [isAddMemberModalOpen, setAddMemberModalOpen] = useState(false);
+  const [isAddScreenModalOpen, setAddScreenModalOpen] = useState(false);
 
   useEffect(() => {
     setProject(mockProjectDetail);
@@ -28,14 +30,16 @@ export function ProjectDetailPage() {
     setEditModalOpen(false);
   };
 
-  const handleAddMembers = (selectedIds: string[]) => {
-    if (!project) return;
-    const newMembers = mockAllUsers.filter(user => selectedIds.includes(user.id));
-    const updatedMembers = [...project.members, ...newMembers];
-    
-    setProject({ ...project, members: updatedMembers });
-    alert(`${newMembers.length} avaliador(es) adicionados com sucesso.`);
-    setAddMemberModalOpen(false);
+  const handleAddMembers = (selectedIds: string[]) => {};
+
+  const handleScreenAdded = (newScreen: Screen) => {
+    if (project) {
+      setProject({
+        ...project,
+        screens: [...project.screens, newScreen],
+      });
+    }
+    setAddScreenModalOpen(false);
   };
 
   if (!project) {
@@ -54,7 +58,7 @@ export function ProjectDetailPage() {
         </div>
         <div className="project-detail-grid">
           <div className="project-detail-main">
-            <ScreenList screens={project.screens} />
+            <ScreenList screens={project.screens} onAddScreenClick={() => setAddScreenModalOpen(true)} />
           </div>
           <div className="project-detail-sidebar">
             <ProjectStats stats={project.stats} />
@@ -69,6 +73,10 @@ export function ProjectDetailPage() {
 
       <Modal isOpen={isAddMemberModalOpen} onClose={() => setAddMemberModalOpen(false)} title="Adicionar Avaliadores">
         <AddMemberForm currentMembers={project.members} onAddMembers={handleAddMembers} />
+      </Modal>
+      
+      <Modal isOpen={isAddScreenModalOpen} onClose={() => setAddScreenModalOpen(false)} title="Cadastrar Nova Tela">
+        <AddScreenForm projectId={project.id} onSuccess={handleScreenAdded} />
       </Modal>
     </>
   );

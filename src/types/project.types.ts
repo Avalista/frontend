@@ -50,3 +50,9 @@ export interface CreateProjectPayload {
   name: string;
   description: string;
 }
+
+export interface CreateScreenPayload {
+  title: string;
+  description: string;
+  screenshot: File;
+}
