@@ -1,5 +1,5 @@
 import React from 'react';
-import { CreateProjectForm } from '../features/projects/CreateProjectForm';
+import { CreateProjectForm } from '../features/projects/ProjectForm';
 import { DashboardLayout } from '../features/dashboard/DashboardLayout';
 
 export function CreateProjectPage() {

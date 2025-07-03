@@ -1,15 +1,26 @@
-import React, { useState } from 'react';
-import { createProject } from '../../api/projectApi';
+import React, { useState, useEffect } from 'react';
+import { createProject, updateProject } from '../../api/projectApi';
+import { Project, CreateProjectPayload } from '../../types/project.types';
 
-interface CreateProjectFormProps {
-  onSuccess: () => void;
+interface ProjectFormProps {
+  project?: Project | null;
+  onSuccess: (updatedProject: Project) => void;
 }
 
-export function CreateProjectForm({ onSuccess }: CreateProjectFormProps) {
+export function ProjectForm({ project, onSuccess }: ProjectFormProps) {
   const [name, setName] = useState('');
   const [description, setDescription] = useState('');
   const [error, setError] = useState('');
   const [isSubmitting, setIsSubmitting] = useState(false);
+
+  const isEditing = !!project;
+
+  useEffect(() => {
+    if (isEditing && project) {
+      setName(project.name);
+      setDescription(project.description);
+    }
+  }, [project, isEditing]);
 
   const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
@@ -19,13 +30,18 @@ export function CreateProjectForm({ onSuccess }: CreateProjectFormProps) {
     }
     setError('');
     setIsSubmitting(true);
-    
+
     try {
-      await createProject({ name, description });
-      alert('Projeto criado com sucesso!');
-      onSuccess();
+      const payload: CreateProjectPayload = { name, description };
+      const updatedProject = isEditing 
+        ? await updateProject(project.id, payload)
+        : await createProject(payload);
+
+      alert(isEditing ? 'Projeto atualizado com sucesso!' : 'Projeto criado com sucesso!');
+      onSuccess(updatedProject);
+
     } catch (err) {
-      setError('Ocorreu um erro ao criar o projeto.');
+      setError('Ocorreu um erro. Tente novamente.');
     } finally {
       setIsSubmitting(false);
     }
@@ -56,8 +72,8 @@ export function CreateProjectForm({ onSuccess }: CreateProjectFormProps) {
           className="form-textarea"
         />
       </div>
-      <button type="submit" className="btn btn-primary" disabled={isSubmitting}>
-        {isSubmitting ? 'Criando...' : 'Criar Projeto'}
+      <button type="submit" className="btn btn-primary" disabled={isSubmitting || !name || !description}>
+        {isSubmitting ? (isEditing ? 'Salvando...' : 'Criando...') : (isEditing ? 'Salvar Alterações' : 'Criar Projeto')}
       </button>
     </form>
   );
