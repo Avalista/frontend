@@ -3,7 +3,12 @@ import { Plus } from 'lucide-react';
 import { ProjectMember } from '../../../types/project.types';
 import './MembersList.css';
 
-export function MembersList({ members }: { members: ProjectMember[] }) {
+interface MembersListProps {
+  members: ProjectMember[];
+  onAddClick: () => void;
+}
+
+export function MembersList({ members, onAddClick }: MembersListProps) {
   return (
     <div className="card">
       <h3 className="card-title">Membros do Projeto</h3>
@@ -13,7 +18,7 @@ export function MembersList({ members }: { members: ProjectMember[] }) {
             <img src={member.avatarUrl} alt={member.name} />
           </div>
         ))}
-        <button className="add-member-button" title="Adicionar novo membro">
+        <button className="add-member-button" title="Adicionar novo membro" onClick={onAddClick}>
           <Plus />
         </button>
       </div>
