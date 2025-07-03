@@ -7,7 +7,7 @@ import { MetricCard } from '../features/dashboard/MetricCard';
 import { ProjectCard } from '../features/dashboard/ProjectCard';
 import { AchievementItem } from '../features/dashboard/AchievementItem';
 import { CategoryTable } from '../features/dashboard/CategoryTable';
-import { CreateProjectForm } from '../features/projects/ProjectForm';
+import { ProjectForm } from '../features/projects/ProjectForm';
 import { Modal } from '../components/ui/Modal';
 import { LoadingScreen } from '../components/ui/LoadingScreen';
 import { mockUser, mockMetrics, mockProjects, mockAchievements, mockCategories } from '../mocks/dashboard.mocks';
@@ -94,7 +94,7 @@ export function DashboardPage() {
         onClose={() => setCreateProjectModalOpen(false)}
         title="Criar Novo Projeto"
       >
-        <CreateProjectForm onSuccess={handleProjectCreated} />
+        <ProjectForm onSuccess={handleProjectCreated} />
       </Modal>
     </>
   );
