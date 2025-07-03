@@ -1,5 +1,6 @@
 import { Project, ProjectMember } from '../types/project.types';
-import { eurecaCategories } from './eureca.mocks';
+import { eurecaData } from './eureca.mocks';
+import hubImage from '../assets/HUB prestador.jpg';
 
 export const mockProjectDetail: Project = {
   id: 'proj-midnights',
@@ -11,9 +12,21 @@ export const mockProjectDetail: Project = {
   screens: [
     {
       id: 'screen-1',
-      title: 'Página Inicial (Hero Section)',
-      imageUrl: 'https://i.imgur.com/3Q3pQ1m.png',
-      evaluationTree: { id: 'root-1', person: { id: 'r1', name: 'Tela Inicial', type: 'category' }, children: Object.entries(eurecaCategories).map(([k, v]) => ({ id: k, person: { id: k, name: v.name, type: 'category' }, children: v.directives.map(d => ({ id: d.id, person: { id: d.id, name: d.title, type: 'directive' }, children: [] }))})) },
+      title: 'Página Inicial (hub sesc)',
+      imageUrl: hubImage,
+      evaluationTree: { 
+        id: 'root-1', 
+        person: { id: 'r1', name: 'Tela Inicial', type: 'category' }, 
+        children: Object.entries(eurecaData).map(([key, value]) => ({ 
+          id: key, 
+          person: { id: key, name: value.name, type: 'category' }, 
+          children: value.directives.map(d => ({ 
+            id: d.id, 
+            person: { id: d.id, name: d.name, type: 'directive' },
+            children: [],
+          }))
+        })) 
+      },
     },
   ],
   members: [

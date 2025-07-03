@@ -1,9 +1,10 @@
 .heuristic-node {
-  padding: 0.5rem 1rem;
+  padding: 0.75rem 1.25rem;
   border-radius: 8px;
-  border: 1px solid var(--color-border);
+  border: 2px solid var(--brand-primary);
   min-width: 180px;
   text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.05);
 }
 
 .node-type-category {
@@ -18,7 +19,7 @@
 
 .node-name {
   font-family: var(--font-heading);
-  font-weight: 600;
+  font-weight: 700;
   font-size: 0.875rem;
   margin: 0;
 }

@@ -1,4 +1,3 @@
-import React from 'react';
 import { Screen } from '../../../types/project.types';
 import { ScreenEvaluation } from './ScreenEvaluation';
 
