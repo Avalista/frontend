@@ -1,3 +1,20 @@
+.project-detail-header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.project-details-wrapper {
+  flex-grow: 1;
+}
+
+.project-detail-header-container .btn-secondary {
+  width: auto;
+  flex-shrink: 0;
+}
+
 .project-detail-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -19,15 +36,4 @@
   display: flex;
   flex-direction: column;
   gap: 2rem;
-}
-.project-detail-header-container {
-  display: flex;
-  justify-content: space-between;
-  align-items: flex-start;
-  gap: 2rem;
-}
-
-.edit-project-button {
-  width: 20px;
-  flex-shrink: 0;
 }

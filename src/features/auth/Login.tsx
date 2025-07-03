@@ -65,7 +65,7 @@ export function Login() {
               className="form-input"
             />
           </div>
-          <button type="submit" className="btn btn-primary">
+          <button type="submit" className="btn btn-primary btn-block">
             Entrar
           </button>
           <p className="navigation-link-text">

@@ -83,7 +83,7 @@ export function Register() {
             <input type="password" id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required className="form-input" />
             {errors.confirmPassword && <p className="error-message-field">{errors.confirmPassword}</p>}
           </div>
-          <button type="submit" className="btn btn-primary">Cadastrar</button>
+          <button type="submit" className="btn btn-primary btn-block">Cadastrar</button>
           <p className="navigation-link-text">
             Já tem uma conta? <Link to="/login" className="navigation-link">Faça login</Link>
           </p>

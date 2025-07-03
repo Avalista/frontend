@@ -34,8 +34,10 @@ export function ProjectDetailPage() {
     <>
       <DashboardLayout>
         <div className="project-detail-header-container">
-          <ProjectHeader name={project.name} description={project.description} />
-          <button className="btn btn-secondary edit-project-button" onClick={() => setEditModalOpen(true)}>
+          <div className="project-details-wrapper">
+            <ProjectHeader name={project.name} description={project.description} />
+          </div>
+          <button className="btn btn-secondary" onClick={() => setEditModalOpen(true)}>
             <Edit3 size={16}/>
             Editar Projeto
           </button>

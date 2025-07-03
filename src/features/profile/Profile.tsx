@@ -180,7 +180,7 @@ export function Profile() {
               {formErrors.info && <p className="error-message-field">{formErrors.info}</p>}
               <div className="form-actions">
                 <button type="button" className="btn btn-secondary" onClick={handleCancelEdit}>Cancelar</button>
-                <button type="submit" className="btn btn-primary">Salvar Alterações</button>
+                <button type="submit" className="btn btn-primary btn-block">Salvar Alterações</button>
               </div>
             </form>
 
