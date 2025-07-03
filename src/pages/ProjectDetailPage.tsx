@@ -1,9 +1,12 @@
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { DashboardLayout } from '../features/dashboard/DashboardLayout';
-import { ScreenEvaluation } from '../features/projects/detail/ScreenEvaluation';
 import { Project } from '../types/project.types';
 import { mockProjectDetail } from '../mocks/projects.mocks';
+import { ProjectHeader } from '../features/projects/detail/ProjectHeader';
+import { ProjectStats } from '../features/projects/detail/ProjectStats';
+import { MembersList } from '../features/projects/detail/MembersList';
+import { ScreenList } from '../features/projects/detail/ScreenList';
 import './ProjectDetailPage.css';
 
 export function ProjectDetailPage() {
@@ -20,14 +23,15 @@ export function ProjectDetailPage() {
 
   return (
     <DashboardLayout>
-      <div className="project-detail-header">
-        <h1 className="project-detail-title">{project.name}</h1>
-        <p className="project-detail-description">{project.description}</p>
-      </div>
-      <div className="screens-container">
-        {project.screens.map(screen => (
-          <ScreenEvaluation key={screen.id} screen={screen} />
-        ))}
+      <ProjectHeader name={project.name} description={project.description} />
+      <div className="project-detail-grid">
+        <div className="project-detail-main">
+          <ScreenList screens={project.screens} />
+        </div>
+        <div className="project-detail-sidebar">
+          <ProjectStats stats={project.stats} />
+          <MembersList members={project.members} />
+        </div>
       </div>
     </DashboardLayout>
   );

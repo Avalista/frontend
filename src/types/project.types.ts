@@ -19,12 +19,32 @@ export interface Screen {
   };
 }
 
-export interface Project {
+export interface ProjectMember {
   id: string;
   name: string;
-  description: string;
-  screens: Screen[];
+  avatarUrl: string;
+  isOwner: boolean;
 }
+
+export interface ProjectStats {
+  problemsFound: number;
+  categoryDistribution: { category: string; count: number }[];
+  problemsSolved: number;
+}
+
+export interface Project {
+  id: string | number;
+  name: string;
+  description: string;
+  mainCategory: CategoryKey | null;
+  status: 'active' | 'completed';
+  progress: number;
+  screens: Screen[];
+  members: ProjectMember[];
+  stats: ProjectStats;
+}
+
+export type CategoryKey = 'AF' | 'CO' | 'FM' | 'NA' | 'PU' | 'PD' | 'AC' | 'LGPD';
 
 export interface CreateProjectPayload {
   name: string;

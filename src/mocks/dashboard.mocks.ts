@@ -24,7 +24,7 @@ export const mockProjects: { id: number; name: string; progress: number; mainCat
   { id: 4, name: 'folklore', progress: 100, mainCategory: 'AC' },
   { id: 5, name: 'Lover', progress: 60, mainCategory: 'PU' },
   { id: 6, name: 'Reputation', progress: 100, mainCategory: 'LGPD' },
-  { id: 7, name: '1989 (Taylor\'s Version)', progress: 75, mainCategory: null }, // Testando o estado padrão
+  { id: 7, name: '1989 (Taylor\'s Version)', progress: 75, mainCategory: null },
   { id: 8, name: 'Red (Taylor\'s Version)', progress: 90, mainCategory: 'FM' },
 ];
 
