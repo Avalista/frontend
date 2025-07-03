@@ -15,29 +15,26 @@ interface ProjectCardProps {
   mainCategory: CategoryKey | null;
 }
 
-const categoryColorMap: Record<CategoryKey, { primary: string; pastel: string }> = {
-  AF: { primary: 'var(--color-af-primary)', pastel: 'var(--color-af-pastel)' },
-  CO: { primary: 'var(--color-co-primary)', pastel: 'var(--color-co-pastel)' },
-  FM: { primary: 'var(--color-fm-primary)', pastel: 'var(--color-fm-pastel)' },
-  NA: { primary: 'var(--color-na-primary)', pastel: 'var(--color-na-pastel)' },
-  PU: { primary: 'var(--color-pu-primary)', pastel: 'var(--color-pu-pastel)' },
-  PD: { primary: 'var(--color-pd-primary)', pastel: 'var(--color-pd-pastel)' },
-  AC: { primary: 'var(--color-ac-primary)', pastel: 'var(--color-ac-pastel)' },
-  LGPD: { primary: 'var(--color-lgpd-primary)', pastel: 'var(--color-lgpd-pastel)' },
+const categoryColorMap: Record<CategoryKey, string> = {
+  AF: 'var(--color-af-pastel)',
+  CO: 'var(--color-co-pastel)',
+  FM: 'var(--color-fm-pastel)',
+  NA: 'var(--color-na-pastel)',
+  PU: 'var(--color-pu-pastel)',
+  PD: 'var(--color-pd-pastel)',
+  AC: 'var(--color-ac-pastel)',
+  LGPD: 'var(--color-lgpd-pastel)',
 };
 
 export function ProjectCard({ id, name, progress, mainCategory }: ProjectCardProps) {
   const { isOpen, toggleDropdown, closeDropdown, dropdownRef } = useDropdown();
 
-  const theme = mainCategory ? categoryColorMap[mainCategory] : null;
-  
-  const cardStyle = theme
-    ? {
-        '--card-bg-color': theme.pastel,
-        '--card-text-color': theme.primary,
-      } as React.CSSProperties
-    : {};
+  const backgroundColor = mainCategory ? categoryColorMap[mainCategory] : 'var(--color-white)';
 
+  const cardStyle = {
+    '--card-bg-color': backgroundColor,
+  } as React.CSSProperties;
+  
   const handleMenuClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
@@ -79,12 +76,12 @@ export function ProjectCard({ id, name, progress, mainCategory }: ProjectCardPro
 
       <div className="card-body">
         <h3 className="card-title">{name}</h3>
+        <div className="progress-bar-container">
+          <div className="progress-bar" style={{ width: `${progress}%` }}></div>
+        </div>
         <div className="progress-info">
           <span className="progress-label">Progresso</span>
           <span className="progress-percentage">{progress}%</span>
-        </div>
-        <div className="progress-bar-container">
-          <div className="progress-bar" style={{ width: `${progress}%` }}></div>
         </div>
       </div>
     </Link>
