@@ -57,9 +57,3 @@ Este documento mapeia o progresso do desenvolvimento do **front-end** em relaç�
 | Demais HUs | Fluxos e problemas finais | ⚫️ | ⚫️ | Pendente. |
 
 ---
-
-## ✅ Sprints 5 & 6
-
-| HU | Funcionalidade | Back-end | Front-end | Observações |
-| :--- | :--- | :---: | :---: | :--- |
-| Todas | Gamificação e Sugestões | ⚫️ | ⚫️ | Aguardando back-end. |
