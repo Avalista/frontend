@@ -52,7 +52,9 @@ export interface CreateProjectPayload {
 }
 
 export interface CreateScreenPayload {
+  projectId: string
   title: string;
   description: string;
-  screenshot: File;
+  screenshot: string;
+  // screenshot: File;
 }

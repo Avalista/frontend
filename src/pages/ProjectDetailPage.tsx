@@ -13,6 +13,8 @@ import { ProjectForm } from '../features/projects/ProjectForm';
 import { AddMemberForm } from '../features/projects/detail/AddMemberForm';
 import { AddScreenForm } from '../features/projects/detail/AddScreenForm';
 import './ProjectDetailPage.css';
+import { getProjectById } from '../api/models/ProjectService';
+import { IProject } from '../interfaces/Project';
 
 export function ProjectDetailPage() {
   const { projectId } = useParams<{ projectId: string }>();
@@ -20,29 +22,49 @@ export function ProjectDetailPage() {
   const [isEditModalOpen, setEditModalOpen] = useState(false);
   const [isAddMemberModalOpen, setAddMemberModalOpen] = useState(false);
   const [isAddScreenModalOpen, setAddScreenModalOpen] = useState(false);
+  const [projectDetailed, setProjectDetailed] = useState<IProject>();
+  const [isLoading, setIsLoading] = useState<boolean>();
 
   useEffect(() => {
-    setProject(mockProjectDetail);
+    setProject(mockProjectDetail)
+    if (projectId) {
+      loadProjectDetailed(projectId)
+    }
   }, [projectId]);
+
+  async function loadProjectDetailed(id: string) {
+    setIsLoading(true);
+
+    try {
+      const data = await getProjectById(id)
+
+      setProjectDetailed(data)
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   const handleProjectUpdate = (updatedProject: Project) => {
     setProject(updatedProject);
     setEditModalOpen(false);
   };
 
-  const handleAddMembers = (selectedIds: string[]) => {};
+  const handleAddMembers = (selectedIds: string[]) => { };
 
-  const handleScreenAdded = (newScreen: Screen) => {
-    if (project) {
-      setProject({
-        ...project,
-        screens: [...project.screens, newScreen],
-      });
+  const handleScreenAdded = async (newScreen: Screen) => {
+    if (projectId) {
+      await loadProjectDetailed(projectId);
+      setAddScreenModalOpen(false);
     }
-    setAddScreenModalOpen(false);
   };
 
   if (!project) {
+    return <DashboardLayout><div>Carregando projeto...</div></DashboardLayout>;
+  }
+
+  if (!projectDetailed) {
     return <DashboardLayout><div>Carregando projeto...</div></DashboardLayout>;
   }
 
@@ -50,15 +72,15 @@ export function ProjectDetailPage() {
     <>
       <DashboardLayout>
         <div className="project-detail-header-container">
-          <ProjectHeader name={project.name} description={project.description} />
+          <ProjectHeader name={projectDetailed.name} description={projectDetailed.description} />
           <button className="btn btn-secondary" onClick={() => setEditModalOpen(true)}>
-            <Edit3 size={16}/>
+            <Edit3 size={16} />
             Editar Projeto
           </button>
         </div>
         <div className="project-detail-grid">
           <div className="project-detail-main">
-            <ScreenList screens={project.screens} onAddScreenClick={() => setAddScreenModalOpen(true)} />
+            <ScreenList screens={projectDetailed.screens} onAddScreenClick={() => setAddScreenModalOpen(true)} />
           </div>
           <div className="project-detail-sidebar">
             <ProjectStats stats={project.stats} />
@@ -74,9 +96,9 @@ export function ProjectDetailPage() {
       <Modal isOpen={isAddMemberModalOpen} onClose={() => setAddMemberModalOpen(false)} title="Adicionar Avaliadores">
         <AddMemberForm currentMembers={project.members} onAddMembers={handleAddMembers} />
       </Modal>
-      
+
       <Modal isOpen={isAddScreenModalOpen} onClose={() => setAddScreenModalOpen(false)} title="Cadastrar Nova Tela">
-        <AddScreenForm projectId={project.id} onSuccess={handleScreenAdded} />
+        <AddScreenForm projectId={projectDetailed?.id} onSuccess={handleScreenAdded} />
       </Modal>
     </>
   );
