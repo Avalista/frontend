@@ -13,16 +13,43 @@ import { LoadingScreen } from '../components/ui/LoadingScreen';
 import { mockUser, mockMetrics, mockProjects, mockAchievements, mockCategories } from '../mocks/dashboard.mocks';
 import { useWindowSize } from '../hooks/useWindowSize';
 import './DashboardPage.css';
+import { getProjects } from '../api/models/ProjectService';
+
+export interface IProject {
+  id: string;
+  name: string;
+  description: string;
+}
 
 export function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const { width } = useWindowSize();
   const [isCreateProjectModalOpen, setCreateProjectModalOpen] = useState(false);
+  const [projects, setProjects] = useState<IProject[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>();
 
   useEffect(() => {
     const timer = setTimeout(() => setLoading(false), 2500);
     return () => clearTimeout(timer);
   }, []);
+
+  useEffect(() => {
+    loadProject()
+  }, [])
+
+  async function loadProject(): Promise<void> {
+    setIsLoading(true)
+
+    try {
+      const data = await getProjects()
+
+      setProjects(data)
+    } catch (error) {
+      console.log(error);
+    } finally {
+      setIsLoading(false)
+    }
+  }
 
   const getVisibleProjectsCount = () => {
     if (width === undefined) return 8;
@@ -65,13 +92,13 @@ export function DashboardPage() {
                 </button>
               </div>
               <div className="projects-grid">
-                {visibleProjects.map(project => (
+                {projects.map(project => (
                   <ProjectCard
                     key={project.id}
                     id={project.id}
                     name={project.name}
-                    progress={project.progress}
-                    mainCategory={project.mainCategory}
+                  // progress={project.progress}
+                  // mainCategory={project.mainCategory}
                   />
                 ))}
               </div>
@@ -88,7 +115,7 @@ export function DashboardPage() {
           </div>
         </div>
       </DashboardLayout>
-      
+
       <Modal
         isOpen={isCreateProjectModalOpen}
         onClose={() => setCreateProjectModalOpen(false)}

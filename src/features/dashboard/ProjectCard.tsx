@@ -11,8 +11,8 @@ type CategoryKey = 'AF' | 'CO' | 'FM' | 'NA' | 'PU' | 'PD' | 'AC' | 'LGPD';
 interface ProjectCardProps {
   id: string | number;
   name: string;
-  progress: number;
-  mainCategory: CategoryKey | null;
+  progress?: number;
+  mainCategory?: CategoryKey | null;
 }
 
 const categoryColorMap: Record<CategoryKey, string> = {
@@ -34,13 +34,13 @@ export function ProjectCard({ id, name, progress, mainCategory }: ProjectCardPro
   const cardStyle = {
     '--card-bg-color': backgroundColor,
   } as React.CSSProperties;
-  
+
   const handleMenuClick = (e: React.MouseEvent) => {
     e.preventDefault();
     e.stopPropagation();
     toggleDropdown();
   };
-  
+
   const handleEdit = () => {
     closeDropdown();
   };
@@ -58,14 +58,14 @@ export function ProjectCard({ id, name, progress, mainCategory }: ProjectCardPro
           <img src={parrotEyeIcon} alt="Ícone do projeto" className="card-icon" />
         </div>
         <div className="menu-container" ref={dropdownRef}>
-          <button 
-            className="card-menu-button" 
+          <button
+            className="card-menu-button"
             title="Opções do projeto"
             onClick={handleMenuClick}
           >
             <MoreHorizontal size={20} />
           </button>
-          <DropdownMenu 
+          <DropdownMenu
             isOpen={isOpen}
             onClose={closeDropdown}
             onEdit={handleEdit}
@@ -79,10 +79,13 @@ export function ProjectCard({ id, name, progress, mainCategory }: ProjectCardPro
         <div className="progress-bar-container">
           <div className="progress-bar" style={{ width: `${progress}%` }}></div>
         </div>
-        <div className="progress-info">
-          <span className="progress-label">Progresso</span>
-          <span className="progress-percentage">{progress}%</span>
-        </div>
+        {(progress && mainCategory) ?? (
+          <div className="progress-info">
+            <span className="progress-label">Progresso</span>
+            <span className="progress-percentage">{progress}%</span>
+          </div>
+        )}
+
       </div>
     </Link>
   );
