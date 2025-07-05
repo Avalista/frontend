@@ -60,9 +60,10 @@ export function DashboardPage() {
 
   const visibleProjects = mockProjects.slice(0, getVisibleProjectsCount());
 
-  const handleProjectCreated = () => {
+  async function handleProjectCreated(newProject: IProject) {
+    setProjects(prevProjects => [...prevProjects, newProject]);
     setCreateProjectModalOpen(false);
-  };
+  }
 
   if (loading) {
     return (
