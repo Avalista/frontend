@@ -6,7 +6,7 @@ export const loginUser = async (credentials: LoginCredentials): Promise<LoginSuc
   return response.data;
 };
 
-export const registerUser = async (credentials: Omit<RegisterCredentials, 'passwordConfirm'>): Promise<any> => {
+export const registerUser = async (credentials: RegisterCredentials): Promise<any> => {
   const response = await apiClient.post('/evaluators', credentials);
   return response.data;
 };

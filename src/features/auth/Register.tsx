@@ -11,7 +11,7 @@ export function Register() {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [confirmPassword, setConfirmPassword] = useState('');
+  const [passwordConfirm, setPasswordConfirm] = useState('');
   const [errors, setErrors] = useState<any>({});
 
   const validateForm = () => {
@@ -26,8 +26,8 @@ export function Register() {
     if (password && !passwordRegex.test(password)) {
       newErrors.password = 'A senha deve ter 8+ caracteres, com maiúscula, minúscula e número.';
     }
-    if (password !== confirmPassword) {
-      newErrors.confirmPassword = 'As senhas não coincidem.';
+    if (password !== passwordConfirm) {
+      newErrors.passwordConfirm = 'As senhas não coincidem.';
     }
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
@@ -40,7 +40,7 @@ export function Register() {
       return;
     }
     try {
-      await registerUser({ name, email, password });
+      await registerUser({ name, email, password, passwordConfirm });
       alert('Cadastro realizado com sucesso! Você será redirecionado para o login.');
       navigate('/login');
     } catch (err) {
@@ -79,9 +79,9 @@ export function Register() {
             {errors.password && <p className="error-message-field">{errors.password}</p>}
           </div>
           <div className="form-group">
-            <label htmlFor="confirmPassword" className="form-label">Confirme sua senha</label>
-            <input type="password" id="confirmPassword" value={confirmPassword} onChange={(e) => setConfirmPassword(e.target.value)} required className="form-input" />
-            {errors.confirmPassword && <p className="error-message-field">{errors.confirmPassword}</p>}
+            <label htmlFor="passwordConfirm" className="form-label">Confirme sua senha</label>
+            <input type="password" id="passwordConfirm" value={passwordConfirm} onChange={(e) => setPasswordConfirm(e.target.value)} required className="form-input" />
+            {errors.passwordConfirm && <p className="error-message-field">{errors.passwordConfirm}</p>}
           </div>
           <button type="submit" className="btn btn-primary btn-block">Cadastrar</button>
           <p className="navigation-link-text">
