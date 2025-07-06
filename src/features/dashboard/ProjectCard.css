@@ -1,11 +1,13 @@
 .project-card-layout {
+  background-color: var(--card-bg-color);
+  color: var(--card-text-color);
+  padding: 1.25rem;
+  border-radius: 16px;
   display: flex;
   flex-direction: column;
-  position: relative;
-  z-index: 1;
-  animation: fadeInUp 0.5s ease-out both;
   text-decoration: none;
-  background-color: var(--card-bg-color, var(--color-white));
+  position: relative;
+  transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .project-card-layout:hover {
@@ -15,12 +17,6 @@
 
 .project-card-layout:hover .card-title {
   text-decoration: underline;
-}
-
-.project-card-layout.is-active {
-  transform: translateY(-5px);
-  box-shadow: 0 12px 20px rgba(0, 0, 0, 0.15);
-  z-index: 10;
 }
 
 .card-header {
@@ -52,12 +48,12 @@
   cursor: pointer;
   padding: 0.25rem;
   border-radius: 50%;
-  color: var(--brand-primary);
+  color: inherit;
   opacity: 0.8;
 }
 
 .card-menu-button:hover {
-  background-color: rgba(0, 0, 0, 0.05);
+  background-color: rgba(255, 255, 255, 0.5);
   opacity: 1;
 }
 
@@ -76,21 +72,20 @@
   font-weight: 800;
   font-size: 1.125rem;
   margin: 0 0 1.5rem 0;
-  color: var(--brand-primary);
+  color: inherit;
 }
 
 .progress-bar-container {
   width: 100%;
-  background-color: var(--color-white);
+  background-color: rgba(255, 255, 255, 0.5);
   border-radius: 9999px;
   height: 4px;
-  border: 1px solid rgba(0, 0, 0, 0.1);
 }
 
 .progress-bar {
   height: 100%;
   border-radius: 9999px;
-  background-color: var(--brand-primary);
+  background-color: var(--card-text-color);
 }
 
 .progress-info {
@@ -100,17 +95,12 @@
   margin-top: 0.5rem;
 }
 
-.progress-label {
+.progress-label, .progress-percentage {
   font-family: var(--font-body);
   font-size: 0.875rem;
-  letter-spacing: 0.5px;
-  color: var(--brand-primary);
-  opacity: 0.7;
+  color: inherit;
 }
 
 .progress-percentage {
-  font-family: var(--font-body);
-  font-size: 0.875rem;
   font-weight: 600;
-  color: var(--brand-primary);
 }

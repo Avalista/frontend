@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { Plus } from 'lucide-react';
 import { ProjectCard } from '../dashboard/ProjectCard';
 import { Project } from '../../types/project.types';
+import { getProjectColors } from '../../utils/color.utils';
 import './ProjectList.css';
 
 type SortOption = 'alphabetical' | 'recent';
@@ -80,15 +81,19 @@ export function ProjectList({ projects }: { projects: Project[] }) {
 
       <div className="projects-grid">
         {filteredAndSortedProjects.length > 0 ? (
-          filteredAndSortedProjects.map(project => (
-            <ProjectCard
-              key={project.id}
-              id={project.id}
-              name={project.name}
-              progress={project.progress}
-              mainCategory={project.mainCategory}
-            />
-          ))
+          filteredAndSortedProjects.map(project => {
+            const colors = getProjectColors(project.mainCategory);
+            return (
+              <ProjectCard
+                key={project.id}
+                id={project.id}
+                name={project.name}
+                progress={project.progress}
+                backgroundColor={colors.pastel}
+                textColor={colors.primary}
+              />
+            );
+          })
         ) : (
           <p className="no-projects-message">Nenhum projeto encontrado com os filtros selecionados.</p>
         )}

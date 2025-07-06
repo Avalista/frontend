@@ -12,44 +12,30 @@ import { Modal } from '../components/ui/Modal';
 import { LoadingScreen } from '../components/ui/LoadingScreen';
 import { mockUser, mockMetrics, mockProjects, mockAchievements, mockCategories } from '../mocks/dashboard.mocks';
 import { useWindowSize } from '../hooks/useWindowSize';
+import { getProjects } from '../api/projectApi';
+import { Project } from '../types/project.types';
+import { getProjectColors } from '../utils/color.utils';
 import './DashboardPage.css';
-import { getProjects } from '../api/models/ProjectService';
-
-export interface IProject {
-  id: string;
-  name: string;
-  description: string;
-}
 
 export function DashboardPage() {
   const [loading, setLoading] = useState(true);
   const { width } = useWindowSize();
   const [isCreateProjectModalOpen, setCreateProjectModalOpen] = useState(false);
-  const [projects, setProjects] = useState<IProject[]>([]);
-  const [isLoading, setIsLoading] = useState<boolean>();
+  const [projects, setProjects] = useState<Project[]>([]);
 
   useEffect(() => {
-    const timer = setTimeout(() => setLoading(false), 2500);
-    return () => clearTimeout(timer);
+    const fetchProjects = async () => {
+      try {
+        const data = await getProjects();
+        setProjects(data);
+      } catch (error) {
+        console.error("Erro ao buscar projetos:", error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchProjects();
   }, []);
-
-  useEffect(() => {
-    loadProject()
-  }, [])
-
-  async function loadProject(): Promise<void> {
-    setIsLoading(true)
-
-    try {
-      const data = await getProjects()
-
-      setProjects(data)
-    } catch (error) {
-      console.log(error);
-    } finally {
-      setIsLoading(false)
-    }
-  }
 
   const getVisibleProjectsCount = () => {
     if (width === undefined) return 8;
@@ -58,12 +44,12 @@ export function DashboardPage() {
     return 4;
   };
 
-  const visibleProjects = mockProjects.slice(0, getVisibleProjectsCount());
+  const visibleProjects = projects.slice(0, getVisibleProjectsCount());
 
-  async function handleProjectCreated(newProject: IProject) {
-    setProjects(prevProjects => [...prevProjects, newProject]);
+  const handleProjectCreated = (newProject: Project) => {
+    setProjects(prevProjects => [newProject, ...prevProjects]);
     setCreateProjectModalOpen(false);
-  }
+  };
 
   if (loading) {
     return (
@@ -87,21 +73,25 @@ export function DashboardPage() {
             <div className="card">
               <div className="section-header">
                 <h2 className="section-title">Meus Projetos</h2>
-                <button onClick={() => setCreateProjectModalOpen(true)} className="section-action-button">
-                  <Plus size={18} strokeWidth={3} />
+                <button onClick={() => setCreateProjectModalOpen(true)} className="btn btn-secondary">
+                  <Plus size={16} />
                   Novo Projeto
                 </button>
               </div>
               <div className="projects-grid">
-                {projects.map(project => (
-                  <ProjectCard
-                    key={project.id}
-                    id={project.id}
-                    name={project.name}
-                  // progress={project.progress}
-                  // mainCategory={project.mainCategory}
-                  />
-                ))}
+                {visibleProjects.map((project) => {
+                  const colors = getProjectColors(project.mainCategory);
+                  return (
+                    <ProjectCard
+                      key={project.id}
+                      id={project.id}
+                      name={project.name}
+                      progress={project.progress}
+                      backgroundColor={colors.pastel}
+                      textColor={colors.primary}
+                    />
+                  );
+                })}
               </div>
             </div>
           </div>

@@ -35,10 +35,13 @@
   --color-gray-900: #111827;
   --color-success: #067647;
   --color-error: #d93025;
+  --color-card-muted-bg: #e7e9f4;
 
+  --color-neutral-primary: #1e293b;
+  --color-neutral-pastel: #f1f5f9;
   
-  --brand-primary: var(--color-af-primary);
-  --brand-pastel: var(--color-af-pastel);
+  --brand-primary: var(--color-neutral-primary);
+  --brand-pastel: var(--color-neutral-pastel);
   
   --font-heading: 'Manrope', sans-serif;
   --font-body: 'DM Mono', monospace;
