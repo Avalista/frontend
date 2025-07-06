@@ -36,26 +36,26 @@
   border-top: 1px solid var(--color-border);
 }
 
+.screen-image-container {
+  width: 100%;
+  height: 200px;
+  margin-bottom: 1rem;
+  background-color: var(--color-gray-100);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .screen-image {
   width: 100%;
-  border-radius: 8px;
-  border: 1px solid var(--color-border);
-  margin-bottom: 2rem;
+  height: 100%;
+  object-fit: contain;
 }
 
 .org-chart-wrapper {
   background-color: var(--color-gray-100);
   border-radius: 8px;
-  padding: 2rem;
+  padding: 1rem;
   overflow-x: auto;
-}
-
-/* react-organization-chart */
-.react-organization-chart {
-  text-align: center;
-}
-
-.react-organization-chart-node-container .oc-node-label {
-  background-color: transparent !important;
-  border: none !important;
 }

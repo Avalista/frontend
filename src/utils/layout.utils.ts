@@ -1,38 +1,43 @@
-export const getLayoutedElements = (categories) => {
-  const nodes = [];
-  const edges = [];
+import { Node, Edge } from 'reactflow';
+import { EurecaCategory } from '../types/eureca.types';
+
+export const getLayoutedElements = (categories: EurecaCategory[]) => {
+  const nodes: Node[] = [];
+  const edges: Edge[] = [];
   let yPos = 0;
 
-  categories.forEach((category, index) => {
+  categories.forEach((category) => {
     const categoryNode = {
       id: category.id,
       type: 'heuristicNode',
-      data: { label: category.name, type: 'category' },
-      position: { x: 0, y: yPos },
+      data: { code: category.code, label: category.name, type: 'category' },
+      position: { x: 350, y: yPos },
     };
     nodes.push(categoryNode);
 
-    yPos += 100;
+    const baseDirectiveY = yPos + 100;
 
-    category.directives.forEach((directive, directiveIndex) => {
+    category.heuristics.forEach((heuristic, index) => {
       const directiveNode = {
-        id: directive.id,
+        id: heuristic.id,
         type: 'heuristicNode',
-        data: { label: directive.name, type: 'directive' },
-        position: { x: 250 + (directiveIndex % 3) * 200, y: yPos + Math.floor(directiveIndex / 3) * 60 },
+        data: { code: heuristic.code, label: heuristic.name, type: 'directive' },
+        position: { x: (index % 4) * 220, y: baseDirectiveY + Math.floor(index / 4) * 80 },
       };
       nodes.push(directiveNode);
 
       const edge = {
-        id: `e-${category.id}-${directive.id}`,
+        id: `e-${category.id}-${heuristic.id}`,
         source: category.id,
-        target: directive.id,
+        target: heuristic.id,
         type: 'smoothstep',
+        animated: true,
       };
       edges.push(edge);
     });
 
-    yPos += Math.ceil(category.directives.length / 3) * 60 + 100;
+    const rows = Math.ceil(category.heuristics.length / 4);
+    yPos += 100 + (rows * 80);
   });
 
   return { nodes, edges };

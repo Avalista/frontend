@@ -15,3 +15,8 @@ export const addScreenToProject = async (payload: CreateScreenPayload): Promise<
   const response = await apiClient.post('/screens', payload)
   return response.data
 };
+
+export const getProjects = async (): Promise<Project[]> => {
+  const response = await apiClient.get<Project[]>('/projects');
+  return response.data;
+};

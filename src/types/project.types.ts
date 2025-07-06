@@ -7,16 +7,9 @@ export interface OrgNode {
 export interface Screen {
   id: string;
   title: string;
-  imageUrl: string;
-  evaluationTree: {
-    id: string;
-    person: OrgNode;
-    children: {
-      id: string;
-      person: OrgNode;
-      children: any[];
-    }[];
-  };
+  description: string;
+  screenshot: string;
+  evaluationTree?: any;
 }
 
 export interface ProjectMember {
