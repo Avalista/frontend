@@ -11,16 +11,31 @@ export function ProjectsPage() {
   const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
-    getProjects()
-      .then(data => {
-        setProjects(data);
-      })
-      .catch(() => {
-        setError('Não foi possível carregar seus projetos.');
-      })
-      .finally(() => {
+    const fetchAndFilterProjects = async () => {
+      const userId = localStorage.getItem('userId');
+      if (!userId) {
+        setError("ID do usuário não encontrado. Faça login novamente.");
         setLoading(false);
-      });
+        return;
+      }
+      
+      try {
+        const allProjects = await getProjects();
+        
+        const myProjects = allProjects.filter(project => 
+          project.members.some(member => member.id === userId)
+        );
+        
+        setProjects(myProjects);
+      } catch (err) {
+        console.error(err);
+        setError('Não foi possível carregar seus projetos.');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchAndFilterProjects();
   }, []);
 
   if (loading) {

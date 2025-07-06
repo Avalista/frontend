@@ -3,6 +3,7 @@ import { useNavigate, Link } from 'react-router-dom';
 import { loginUser } from '../../api/authApi';
 import { isAxiosError } from 'axios';
 import { ApiErrorResponse } from '../../types/auth.types';
+import { jwtDecode } from 'jwt-decode';
 import logo from '../../assets/logo-horizontal-laranja.svg';
 import './Login.css';
 
@@ -18,7 +19,14 @@ export function Login() {
     
     try {
       const responseData = await loginUser({ email, password });
-      localStorage.setItem('authToken', responseData.access_token);
+      
+      const token = responseData.access_token;
+      const decodedToken: { sub: string } = jwtDecode(token);
+      const userId = decodedToken.sub;
+
+      localStorage.setItem('authToken', token);
+      localStorage.setItem('userId', userId);
+      
       navigate('/dashboard');
     } catch (err) {
       if (isAxiosError<ApiErrorResponse>(err) && err.response) {

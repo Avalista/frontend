@@ -1,7 +1,17 @@
+import React from 'react';
 import { ProjectStats as StatsType } from '../../../types/project.types';
 import './ProjectStats.css';
 
-export function ProjectStats({ stats }: { stats: StatsType }) {
+export function ProjectStats({ stats }: { stats?: StatsType }) {
+  if (!stats) {
+    return (
+      <div className="card">
+        <h3 className="card-title">Métricas do Projeto</h3>
+        <p className="stats-unavailable">As estatísticas para este projeto ainda não estão disponíveis.</p>
+      </div>
+    );
+  }
+
   return (
     <div className="card">
       <h3 className="card-title">Métricas do Projeto</h3>

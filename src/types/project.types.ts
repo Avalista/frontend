@@ -1,3 +1,5 @@
+export type CategoryKey = 'AF' | 'CO' | 'FM' | 'NA' | 'PU' | 'PD' | 'AC' | 'LGPD';
+
 export interface OrgNode {
   id: string;
   name: string;
@@ -26,7 +28,7 @@ export interface ProjectStats {
 }
 
 export interface Project {
-  id: string | number;
+  id: string;
   name: string;
   description: string;
   mainCategory: CategoryKey | null;
@@ -37,7 +39,20 @@ export interface Project {
   stats: ProjectStats;
 }
 
-export type CategoryKey = 'AF' | 'CO' | 'FM' | 'NA' | 'PU' | 'PD' | 'AC' | 'LGPD';
+export interface EvaluationItem {
+  id: string;
+  status: 'NOT_REVIEWED' | 'REVIEWED_OK' | 'REVIEWED_ISSUE';
+  reviewedAt: string | null;
+  screen: Screen;
+}
+
+export interface EvaluationSession {
+  id: string;
+  startedAt: string;
+  finishedAt: string | null;
+  status: 'IN_PROGRESS' | 'COMPLETED';
+  evaluationItems: EvaluationItem[];
+}
 
 export interface CreateProjectPayload {
   name: string;
@@ -45,9 +60,8 @@ export interface CreateProjectPayload {
 }
 
 export interface CreateScreenPayload {
-  projectId: string
+  projectId: string;
   title: string;
   description: string;
   screenshot: string;
-  // screenshot: File;
 }
