@@ -1,11 +1,6 @@
 import apiClient from './apiClient';
 import { UserProfile, UserProfileUpdate } from '../types/auth.types';
 
-export const getUserProfile = async (): Promise<UserProfile> => {
-  const response = await apiClient.get<UserProfile>('/profile/me');
-  return response.data;
-};
-
 export const updateUserProfile = async (data: UserProfileUpdate): Promise<UserProfile> => {
   const response = await apiClient.patch<UserProfile>('/evaluators', data);
   return response.data;

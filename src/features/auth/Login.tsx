@@ -21,11 +21,16 @@ export function Login() {
       const responseData = await loginUser({ email, password });
       
       const token = responseData.access_token;
-      const decodedToken: { sub: string } = jwtDecode(token);
-      const userId = decodedToken.sub;
+      const decodedToken: { sub: string; name: string; email: string } = jwtDecode(token);
+      
+      const userData = {
+        id: decodedToken.sub,
+        name: decodedToken.name,
+        email: decodedToken.email,
+      };
 
       localStorage.setItem('authToken', token);
-      localStorage.setItem('userId', userId);
+      localStorage.setItem('user', JSON.stringify(userData));
       
       navigate('/dashboard');
     } catch (err) {
@@ -37,8 +42,8 @@ export function Login() {
       } else {
         setError('Não foi possível fazer o login.');
       }
-    }
-  };
+  }
+};
 
   return (
     <div className="login-page">

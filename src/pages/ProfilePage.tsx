@@ -1,4 +1,4 @@
-import Profile from '../features/profile/Profile';
+import {Profile} from '../features/profile/Profile';
 import { DashboardLayout } from '../features/dashboard/DashboardLayout';
 
 export function ProfilePage() {
