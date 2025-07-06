@@ -1,5 +1,6 @@
 # 📋 Status de Desenvolvimento: Front-end vs. Back-end Avalista
 
+
 Este documento mapeia o progresso do desenvolvimento do **front-end** em relação às **Histórias de Usuário (HUs)** concluídas pelo **back-end**.
 
 ---
@@ -19,13 +20,13 @@ Este documento mapeia o progresso do desenvolvimento do **front-end** em relaç�
 
 | HU | Funcionalidade | Back-end | Front-end | Observações |
 | :--- | :--- | :---: | :---: | :--- |
-| HU001 | Criar conta | ✅ | ✅ | Página `Register.tsx` pronta. |
-| HU002 | Fazer login | ✅ | ✅ | Página `Login.tsx` funcional e conectada. |
-| HU004 | Criar projeto | ✅ | ✅ | Implementado como modal no dashboard. |
-| HU005 | Visualizar meus projetos | ✅ | 🟡 | Exibe no dashboard, falta página dedicada. |
-| HU006 | Detalhar meu projeto | ✅ | ✅ | Página de detalhes com organograma funcional. |
-| HU009 | Cadastrar uma tela | ✅ | ✅ | Modal implementado na pág. de detalhes do projeto. |
-| HU012 | Iniciar avaliação individual | ⚫️ | ⚫️ | Interface base da anotação criada, aguardando API. |
+| HU001 | Criar conta | ✅ | ✅ | Implementado e conectado. |
+| HU002 | Fazer login | ✅ | ✅ | Implementado e conectado. |
+| HU004 | Criar projeto | ✅ | ✅ | Implementado como modal. |
+| HU005 | Visualizar meus projetos | ✅ | ✅ | Página dedicada `/projects` implementada e conectada. |
+| HU006 | Detalhar meu projeto | ✅ | ✅ | Página de detalhes com componentes e dados reais. |
+| HU009 | Cadastrar uma tela | ✅ | ✅ | Modal implementado e pronto para integração final. |
+| HU012 | Iniciar avaliação individual | ⚫️ | ⚫️ | UI base pronta, mas bloqueada pela API. |
 | HU013 | Adicionar problema à avaliação| ⚫️ | ⚫️ | Pendente. |
 | HU014 | Visualizar progresso por tela | ⚫️ | ⚫️ | Pendente. |
 | HU015 | Visualizar progresso por categoria| ⚫️ | ⚫️ | Pendente. |
@@ -55,14 +56,14 @@ Este documento mapeia o progresso do desenvolvimento do **front-end** em relaç�
 
 | HU | Funcionalidade | Back-end | Front-end | Observações |
 | :--- | :--- | :---: | :---: | :--- |
-| HU026 | Cadastrar categoria | ✅ | 🔵 | Back-end pronto. |
-| HU027 | Editar categoria | ✅ | 🔵 | Back-end pronto. |
-| HU029 | Detalhar categoria | ✅ | 🔵 | Back-end pronto. |
-| HU030 | Deletar categoria | ✅ | 🔵 | Back-end pronto. |
-| HU031 | Cadastrar diretriz | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
-| HU032 | Editar diretriz | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
-| HU034 | Detalhar diretriz | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
-| HU035 | Deletar diretriz | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
+| HU026 | Cadastrar categoria | ✅ | 🔵 | Back-end pronto. Pode ser implementado. |
+| HU027 | Editar categoria | ✅ | 🔵 | Back-end pronto. Pode ser implementado. |
+| HU029 | Detalhar categoria | ✅ | 🔵 | Back-end pronto. Pode ser implementado. |
+| HU030 | Deletar categoria | ✅ | 🔵 | Back-end pronto. Pode ser implementado. |
+| HU031 | Cadastrar diretriz | ⚫️ | ⚫️ | Função de Administrador. |
+| HU032 | Editar diretriz | ⚫️ | ⚫️ | Função de Administrador. |
+| HU034 | Detalhar diretriz | ⚫️ | ⚫️ | Função de Administrador. |
+| HU035 | Deletar diretriz | ⚫️ | ⚫️ | Função de Administrador. |
 
 ---
 
@@ -70,7 +71,7 @@ Este documento mapeia o progresso do desenvolvimento do **front-end** em relaç�
 
 | HU | Funcionalidade | Back-end | Front-end | Observações |
 | :--- | :--- | :---: | :---: | :--- |
-| HU003 | Visualizar meu perfil | ⚫️ | ⚫️ | Front-end pronto (mock), API a validar. |
+| HU003 | Visualizar meu perfil | ⚫️ | ⚫️ | Front-end pronto, API a validar/finalizar. |
 | HU007 | Editar meu projeto | ⚫️ | ⚫️ | Modal de edição pronto, aguardando API. |
 | HU010 | Editar um fluxo | ⚫️ | ⚫️ | Pendente. |
 | HU011 | Excluir um fluxo | ⚫️ | ⚫️ | Pendente. |
@@ -84,22 +85,4 @@ Este documento mapeia o progresso do desenvolvimento do **front-end** em relaç�
 | :--- | :--- | :---: | :---: | :--- |
 | HU024 | Atribuir emblemas ao avaliador | ⚫️ | ⚫️ | Pendente. |
 | HU025 | Visualizar meus emblemas | ⚫️ | ⚫️ | UI de emblemas pronta, aguardando API. |
-| HU043 | Listagem de avalistas | ⚫️ | ⚫️ | Pendente. |
-| HU044 | Visualizar minhas estatísticas | ⚫️ | ⚫️ | UI de métricas pronta, aguardando API. |
-| HU045 | Visualizar estatísticas do projeto | ⚫️ | ⚫️ | Pendente. |
-| HU046 | Visualizar todos os projetos | ⚫️ | ⚫️ | Pendente. |
-
----
-
-## ✅ Sprint 6 (15/07/2025 - 22/07/2025)
-
-| HU | Funcionalidade | Back-end | Front-end | Observações |
-| :--- | :--- | :---: | :---: | :--- |
-| HU036 | Sugerir uma nova categoria | ⚫️ | ⚫️ | Pendente. |
-| HU037 | Sugerir uma nova diretriz | ⚫️ | ⚫️ | Pendente. |
-| HU038 | Listar sugestões de categorias | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
-| HU039 | Listar sugestões de diretrizes | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
-| HU040 | Analisar sugestão de categoria | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
-| HU041 | Analisar sugestão de diretriz | ⚫️ | ⚫️ | Funcionalidades de Administrador. |
-| HU042 | Visualizar listas | ⚫️ | ⚫️ | Pendente. |
-| HU047 | Detalhar lista | ⚫️ | ⚫️ | Pendente. |
+| HU04
