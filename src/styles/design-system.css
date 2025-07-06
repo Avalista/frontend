@@ -156,3 +156,8 @@ button{
   background-color: var(--color-gray-100);
   border-color: #d1d5db;
 }
+
+.form-color-input { 
+  height: 44px; 
+  padding: 0.25rem; 
+}

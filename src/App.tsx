@@ -7,6 +7,7 @@ import { DashboardPage } from './pages/DashboardPage';
 import { ProjectDetailPage } from './pages/ProjectDetailPage';
 import { ProjectsPage } from './pages/ProjectsPage';
 import { EvaluationPage } from './pages/EvaluationPage';
+import { ManageCategoriesPage } from './pages/admin/ManageCategoriesPage';
 import { ProtectedRoute } from './routes/ProtectedRoute';
 
 export const router = createBrowserRouter([
@@ -48,6 +49,10 @@ export const router = createBrowserRouter([
           {
             path: 'projects/:projectId/evaluation',
             element: <EvaluationPage />,
+          },
+          {
+            path: 'admin/categories',
+            element: <ManageCategoriesPage />,
           },
         ],
       },

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { 
   PlusSquare, 
@@ -8,6 +8,7 @@ import {
   Eye,
   BarChart3, 
   Settings, 
+  Shield,
   LogOut 
 } from 'lucide-react';
 import parrotIcon from '../../assets/icon-azul-marinho.svg';
@@ -17,6 +18,10 @@ interface NavItemProps {
   to: string;
   label: string;
   icon: React.ElementType;
+}
+
+interface StoredUser {
+  funcao: string;
 }
 
 const NavItem = ({ icon: Icon, to, label }: NavItemProps) => {
@@ -32,9 +37,21 @@ const NavItem = ({ icon: Icon, to, label }: NavItemProps) => {
 
 export function Sidebar() {
   const navigate = useNavigate();
+  const [isAdmin, setIsAdmin] = useState(false);
+
+  useEffect(() => {
+    const userString = localStorage.getItem('user');
+    if (userString) {
+      const user: StoredUser = JSON.parse(userString);
+      if (user.funcao === 'ADMIN') {
+        setIsAdmin(true);
+      }
+    }
+  }, []);
 
   const handleLogout = () => {
     localStorage.removeItem('authToken');
+    localStorage.removeItem('user');
     navigate('/login');
   };
 
@@ -52,8 +69,11 @@ export function Sidebar() {
         <NavItem icon={BookOpen} to="/projects" label="Projetos" />
         <NavItem icon={BarChart3} to="/metrics" label="Métricas" />
         <NavItem icon={GraduationCap} to="/studies" label="Estudos" />
-        <NavItem icon={Eye} to="/eureca" label="Familia Eureca" />
+        <NavItem icon={Eye} to="/eureka" label="Técnica Eureka" />
         <NavItem icon={Settings} to="/profile" label="Configurações" />
+        {isAdmin && (
+          <NavItem icon={Shield} to="/admin/categories" label="Administração" />
+        )}
       </nav>
 
       <div className="sidebar-logout">

@@ -21,12 +21,13 @@ export function Login() {
       const responseData = await loginUser({ email, password });
       
       const token = responseData.access_token;
-      const decodedToken: { sub: string; name: string; email: string } = jwtDecode(token);
+      const decodedToken: { sub: string; name: string; email: string; funcao: string; } = jwtDecode(token);
       
       const userData = {
         id: decodedToken.sub,
         name: decodedToken.name,
         email: decodedToken.email,
+        funcao: decodedToken.funcao,
       };
 
       localStorage.setItem('authToken', token);
@@ -42,18 +43,18 @@ export function Login() {
       } else {
         setError('Não foi possível fazer o login.');
       }
-  }
-};
+    }
+  };
 
   return (
     <div className="login-page">
       <div className="card login-container-layout">
         <img src={logo} alt="Logo da Avalista" className="login-logo" />
-        <h1 className="login-title">Bem vindo de volta, ao Avalista!</h1>
+        <h1 className="page-title">Bem vindo de volta, ao Avalista!</h1>
         <p className="login-greeting">Insira seus dados para continuar.</p>
 
-        <form onSubmit={handleSubmit} className="login-form">
-          {error && <p className="error-message-global">{error}</p>}
+        <form onSubmit={handleSubmit}>
+          {error && <p className="alert alert-error">{error}</p>}
           <div className="form-group">
             <label htmlFor="email" className="form-label">Seu e-mail</label>
             <input
