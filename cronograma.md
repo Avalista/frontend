@@ -4,8 +4,6 @@ Este documento mapeia o progresso do front-end com base nos módulos da aplicaç
 
 ---
 
-## 🧭 Legenda de Status (Front-end)
-
 | Emoji  | Significado                                                   |
 |--------|---------------------------------------------------------------|
 | ✅     | **Concluído**: A funcionalidade principal está implementada.   |
