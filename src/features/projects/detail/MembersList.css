@@ -67,3 +67,9 @@
   color: var(--brand-primary);
   background-color: var(--brand-pastel);
 }
+
+.node-type-directive:hover {
+  cursor: pointer;
+  transform: scale(1.05);
+  box-shadow: 0 0 15px var(--brand-pastel);
+}

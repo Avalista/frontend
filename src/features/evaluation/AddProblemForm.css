@@ -1,0 +1,16 @@
+.add-problem-form .form-row {
+  display: flex;
+  gap: 1rem;
+}
+.add-problem-form .form-row .form-group {
+  flex: 1;
+}
+.add-problem-form .form-checkbox-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.add-problem-form .form-checkbox-group label {
+  margin-bottom: 0;
+  font-weight: normal;
+}

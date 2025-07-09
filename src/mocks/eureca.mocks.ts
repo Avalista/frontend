@@ -3,7 +3,7 @@ export const eurecaData = [
     id: 'cat-AF',
     code: 'AF',
     name: 'Aspectos Funcionais',
-    directives: [
+    heuristics: [
       { id: 'AF1', code: 'AF1', name: 'Funcionalidade', description: 'As ações apresentadas na tela do usuário devem se comportar de acordo com o objetivo proposto.' },
       { id: 'AF2', code: 'AF2', name: 'Flexibilidade de ação', description: 'Oferecer distintas alternativas para uma mesma ação como o uso de atalhos.' },
       { id: 'AF3', code: 'AF3', name: 'Edição de ações', description: 'Permitir que ações realizadas sejam desfeitas e refeitas.' },
@@ -21,7 +21,7 @@ export const eurecaData = [
     id: 'cat-CO',
     code: 'CO',
     name: 'Comunicação',
-    directives: [
+    heuristics: [
       { id: 'CO1', code: 'CO1', name: 'Linguagem apropriada', description: 'Promover uma comunicação próxima ao conceito do projeto.' },
       { id: 'CO2', code: 'CO2', name: 'Feedback adequado', description: 'Responder à toda ação do usuário, de forma imediata.' },
       { id: 'CO3', code: 'CO3', name: 'Affordance - dicas', description: 'Oferecer dicas para ajudar a compreensão do uso do ambiente.' },
@@ -37,7 +37,7 @@ export const eurecaData = [
     id: 'cat-FM',
     code: 'FM',
     name: 'Formatação',
-    directives: [
+    heuristics: [
       { id: 'FM1', code: 'FM1', name: 'Visibilidade', description: 'Manter visíveis as informações principais para minimizar esforço cognitivo.' },
       { id: 'FM2', code: 'FM2', name: 'Hierarquia da informação', description: 'Distribuir a informação criando hierarquia visual.' },
       { id: 'FM3', code: 'FM3', name: 'Filtragem da informação', description: 'Possibilitar a apresentação da informação selecionada, obedecendo critérios por filtro.' },
@@ -61,7 +61,7 @@ export const eurecaData = [
     id: 'cat-NA',
     code: 'NA',
     name: 'Navegação',
-    directives: [
+    heuristics: [
       { id: 'NA1', code: 'NA1', name: 'Convite guia condutor', description: 'Apresentar um convite para conduzir a utilização do aplicativo na primeira vez.' },
       { id: 'NA2', code: 'NA2', name: 'Caminhos de Navegação', description: 'Apresentar múltiplas formas de navegação (menus, busca, filtros, etc.).' },
       { id: 'NA3', code: 'NA3', name: 'Continuidade', description: 'Organizar grupos de sequências de ações com começo, meio e fim.' },
@@ -73,7 +73,7 @@ export const eurecaData = [
     id: 'cat-PU',
     code: 'PU',
     name: 'Particularidades do Usuário',
-    directives: [
+    heuristics: [
       { id: 'PU1', code: 'PU1', name: 'Controle do usuário', description: 'Permitir ao usuário o controle das ações de interação.' },
       { id: 'PU2', code: 'PU2', name: 'Personalização', description: 'Possibilitar opções de personalização, de acordo com preferências individuais.' },
       { id: 'PU3', code: 'PU3', name: 'Autorização', description: 'Pedir autorização do usuário para ações invasivas.' },
@@ -85,7 +85,7 @@ export const eurecaData = [
     id: 'cat-PD',
     code: 'PD',
     name: 'Particularidades do Dispositivo',
-    directives: [
+    heuristics: [
       { id: 'PD1', code: 'PD1', name: 'Recursos do dispositivo', description: 'Explorar a mobilidade e a multifuncionalidade do ambiente móvel.' },
       { id: 'PD2', code: 'PD2', name: 'Adequação a padrões', description: 'Rever a formatação da informação para o ambiente móvel.' },
       { id: 'PD3', code: 'PD3', name: 'Responsividade', description: 'Responder ao tamanho da tela e adequar a quantidade de informação.' },
@@ -98,7 +98,7 @@ export const eurecaData = [
     id: 'cat-AC',
     code: 'AC',
     name: 'Acessibilidade',
-    directives: [
+    heuristics: [
       { id: 'AC1', code: 'AC1', name: 'Texto alternativo', description: 'Desenvolver códigos que mantenham textos alternativos para imagens e ícones.' },
       { id: 'AC2', code: 'AC2', name: 'Navegação acessível', description: 'Tornar a navegação acessível por meio da utilização do teclado.' },
       { id: 'AC3', code: 'AC3', name: 'Destaque para funções essenciais', description: 'Manter os ícones de perfil, ajuda e campo de busca visíveis e no topo.' },
@@ -121,7 +121,7 @@ export const eurecaData = [
     id: 'cat-PS',
     code: 'PS',
     name: 'Privacidade e Segurança de Dados (LGPD)',
-    directives: [
+    heuristics: [
       { id: 'PS1', code: 'PS1', name: 'Privacidade de dados pessoais', description: 'Permitir aos usuários a configuração do estado de privacidade de seus dados.' },
       { id: 'PS2', code: 'PS2', name: 'Responsabilidade com dados pessoais', description: 'Informar que a aplicação se compromete com o uso responsável dos dados.' },
       { id: 'PS3', code: 'PS3', name: 'Segurança de dados pessoais', description: 'Informar que o aplicativo adota medidas de segurança para prevenir danos.' },

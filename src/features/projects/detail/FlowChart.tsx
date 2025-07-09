@@ -1,31 +1,20 @@
-import React, { useState, useEffect, useMemo } from 'react';
-import ReactFlow, { Background, Controls, MiniMap } from 'reactflow';
+import React, { useMemo } from 'react';
+import ReactFlow, { Background, Controls, MiniMap, Node } from 'reactflow';
 import 'reactflow/dist/style.css';
 import { HeuristicNode } from './HeuristicNode';
-import { getEurecaData } from '../../../api/eurecaApi';
-import { EurecaCategory } from '../../../types/eureca.types';
+import { eurecaData } from '../../../mocks/eureca.mocks';
 import { getLayoutedElements } from '../../../utils/layout.utils';
 
 const nodeTypes = {
   heuristicNode: HeuristicNode,
 };
 
-export function FlowChart() {
-  const [categories, setCategories] = useState<EurecaCategory[]>([]);
-  const [loading, setLoading] = useState(true);
+interface FlowChartProps {
+  onNodeClick: (node: Node) => void;
+}
 
-  useEffect(() => {
-    getEurecaData()
-      .then(data => setCategories(data))
-      .catch(console.error)
-      .finally(() => setLoading(false));
-  }, []);
-  
-  const { nodes, edges } = useMemo(() => getLayoutedElements(categories), [categories]);
-
-  if (loading) {
-    return <div style={{ height: '600px' }}>Carregando organograma...</div>;
-  }
+export function FlowChart({ onNodeClick }: FlowChartProps) {
+  const { nodes, edges } = useMemo(() => getLayoutedElements(eurecaData), []);
 
   return (
     <div style={{ height: '800px', width: '100%' }}>
@@ -33,6 +22,7 @@ export function FlowChart() {
         nodes={nodes}
         edges={edges}
         nodeTypes={nodeTypes}
+        onNodeClick={(_, node) => onNodeClick(node)}
         fitView
       >
         <Background />

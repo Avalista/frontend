@@ -1,5 +1,6 @@
 import { Project, ProjectMember } from '../types/project.types';
 import { eurecaData } from './eureca.mocks';
+import { EurecaCategory, Heuristic } from '../types/eureca.types';
 import hubImage from '../assets/HUB prestador.jpg';
 
 export const mockProjectDetail: Project = {
@@ -13,14 +14,15 @@ export const mockProjectDetail: Project = {
     {
       id: 'screen-1',
       title: 'Página Inicial (hub sesc)',
-      imageUrl: hubImage,
+      description: 'Tela principal de acesso aos serviços.',
+      screenshot: hubImage,
       evaluationTree: { 
         id: 'root-1', 
         person: { id: 'r1', name: 'Tela Inicial', type: 'category' }, 
-        children: Object.entries(eurecaData).map(([key, value]) => ({ 
+        children: Object.entries(eurecaData).map(([key, value]: [string, EurecaCategory]) => ({ 
           id: key, 
           person: { id: key, name: value.name, type: 'category' }, 
-          children: value.directives.map(d => ({ 
+          children: value.heuristics.map((d: Heuristic) => ({ 
             id: d.id, 
             person: { id: d.id, name: d.name, type: 'directive' },
             children: [],

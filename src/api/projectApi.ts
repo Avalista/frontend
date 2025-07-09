@@ -1,5 +1,5 @@
 import apiClient from './apiClient';
-import { Project, CreateProjectPayload, Screen, CreateScreenPayload, EvaluationSession } from '../types/project.types';
+import { Project, CreateProjectPayload, Screen, CreateScreenPayload, EvaluationSession, StartEvaluationResponse } from '../types/project.types';
 
 export const createProject = async (payload: CreateProjectPayload): Promise<Project> => {
   const response = await apiClient.post<Project>('/projects', payload);
@@ -26,7 +26,7 @@ export const getProjectById = async (projectId: string): Promise<Project> => {
   return response.data;
 };
 
-export const startEvaluation = async (projectId: string | number): Promise<EvaluationSession> => {
-  const response = await apiClient.post<EvaluationSession>('/evaluations/initialize', { projectId });
+export const startEvaluation = async (projectId: string): Promise<StartEvaluationResponse> => {
+  const response = await apiClient.post<StartEvaluationResponse>('/evaluations/initialize', { projectId });
   return response.data;
 };

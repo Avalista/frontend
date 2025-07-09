@@ -18,12 +18,44 @@ export interface ApiErrorResponse {
   error: string;
 }
 
-export interface UserProfile {
+export type CategoryKey = 'AF' | 'CO' | 'FM' | 'NA' | 'PU' | 'PD' | 'AC' | 'LGPD';
+
+export interface Screen {
+  id: string;
+  title: string;
+  description: string;
+  screenshot: string;
+}
+
+export interface ProjectMember {
   id: string;
   name: string;
+  avatarUrl: string;
+  isOwner: boolean;
+}
+
+export interface ProjectStats {
+  problemsFound: number;
+  categoryDistribution: { category: string; count: number }[];
+  problemsSolved: number;
+}
+
+export interface Project {
+  id: string;
+  name: string;
+  description: string;
+  mainCategory: CategoryKey | null;
+  status: 'active' | 'completed';
+  progress: number;
+  screens: Screen[];
+  members: ProjectMember[];
+  stats: ProjectStats;
+  currentUserEvaluationSession?: { id: string; status: string } | null;
+}
+
+export interface UserProfile extends ProjectMember {
   email: string;
   funcao: string;
-  avatarUrl: string;
   badges: {
     id: string;
     name: string;

@@ -2,7 +2,7 @@ import { useEffect, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { Edit3, PlayCircle } from 'lucide-react';
 import { DashboardLayout } from '../features/dashboard/DashboardLayout';
-import { Project, Screen, ProjectMember, UserProfileUpdate } from '../types/project.types';
+import { Project, Screen, ProjectMember, UserProfileUpdate, ApiErrorResponse } from '../types/auth.types';
 import { ProjectHeader } from '../features/projects/detail/ProjectHeader';
 import { ProjectStats } from '../features/projects/detail/ProjectStats';
 import { MembersList } from '../features/projects/detail/MembersList';
@@ -11,9 +11,10 @@ import { Modal } from '../components/ui/Modal';
 import { ProjectForm } from '../features/projects/ProjectForm';
 import { AddMemberForm } from '../features/projects/detail/AddMemberForm';
 import { AddScreenForm } from '../features/projects/detail/AddScreenForm';
-import { startEvaluation, getProjectById, updateProject } from '../api/projectApi';
+import { startEvaluation, getProjectById } from '../api/projectApi';
 import { LoadingScreen } from '../components/ui/LoadingScreen';
 import { mockAllUsers } from '../mocks/projects.mocks';
+import { isAxiosError } from 'axios';
 import './ProjectDetailPage.css';
 
 export function ProjectDetailPage() {
@@ -76,7 +77,12 @@ export function ProjectDetailPage() {
       const sessionData = await startEvaluation(projectId);
       navigate(`/projects/${projectId}/evaluation`, { state: { session: sessionData } });
     } catch (err) {
-      alert("Não foi possível iniciar a avaliação.");
+      if (isAxiosError<ApiErrorResponse>(err) && err.response) {
+        const serverMessage = `Erro do Servidor: ${err.response.data.message}`;
+        alert(serverMessage);
+      } else {
+        alert("Ocorreu um erro de rede ou inesperado.");
+      }
     }
   };
 
@@ -100,10 +106,17 @@ export function ProjectDetailPage() {
               <Edit3 size={16}/>
               Editar Projeto
             </button>
-            <button className="btn btn-primary" onClick={handleStartEvaluation}>
-              <PlayCircle size={16} />
-              Iniciar Avaliação
-            </button>
+            {project.currentUserEvaluationSession ? (
+              <Link to={`/projects/${project.id}/evaluation`} className="btn btn-primary">
+                <PlayCircle size={16}/>
+                Continuar Avaliação
+              </Link>
+            ) : (
+              <button className="btn btn-primary" onClick={handleStartEvaluation}>
+                <PlayCircle size={16} />
+                Iniciar Avaliação
+              </button>
+            )}
           </div>
         </div>
         <div className="project-detail-grid">
