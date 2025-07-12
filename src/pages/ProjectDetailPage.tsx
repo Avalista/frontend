@@ -55,7 +55,7 @@ export function ProjectDetailPage() {
     if (!project) return;
     const newMembers = mockAllUsers.filter(user => selectedIds.includes(user.id));
     const updatedMembers = [...project.members, ...newMembers];
-    
+
     setProject({ ...project, members: updatedMembers });
     alert(`${newMembers.length} avaliador(es) adicionados com sucesso (simulado).`);
     setAddMemberModalOpen(false);
@@ -103,18 +103,19 @@ export function ProjectDetailPage() {
           </div>
           <div className="header-actions">
             <button className="btn btn-secondary" onClick={() => setEditModalOpen(true)}>
-              <Edit3 size={16}/>
+              <Edit3 size={16} />
               Editar Projeto
             </button>
             {project.currentUserEvaluationSession ? (
               <Link to={`/projects/${project.id}/evaluation`} className="btn btn-primary">
-                <PlayCircle size={16}/>
+                <PlayCircle size={16} />
                 Continuar Avaliação
               </Link>
             ) : (
               <button className="btn btn-primary" onClick={handleStartEvaluation}>
                 <PlayCircle size={16} />
                 Iniciar Avaliação
+                {/* Vericiar se ja tem avaliação ativa, então trocar para continuar avaliação */}
               </button>
             )}
           </div>
@@ -137,7 +138,7 @@ export function ProjectDetailPage() {
       <Modal isOpen={isAddMemberModalOpen} onClose={() => setAddMemberModalOpen(false)} title="Adicionar Avaliadores">
         <AddMemberForm currentMembers={project.members} onAddMembers={handleAddMembers} />
       </Modal>
-      
+
       <Modal isOpen={isAddScreenModalOpen} onClose={() => setAddScreenModalOpen(false)} title="Cadastrar Nova Tela">
         <AddScreenForm projectId={project.id} onSuccess={handleScreenAdded} />
       </Modal>

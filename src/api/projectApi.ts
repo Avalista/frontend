@@ -11,9 +11,23 @@ export const updateProject = async (projectId: string | number, payload: CreateP
   return response.data;
 };
 
-export const addScreenToProject = async (payload: CreateScreenPayload): Promise<Screen> => {
-  const response = await apiClient.post<Screen>('/screens', payload);
-  return response.data;
+export const addScreenToProject = async (formData: FormData): Promise<Screen> => {
+  try {
+    const response = await apiClient.post<Screen>(
+      `/screens`,
+      formData,
+      {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      }
+    );
+    
+    return response.data;
+  } catch (error) {
+    console.error('Erro ao adicionar tela:', error);
+    throw error;
+  }
 };
 
 export const getProjects = async (): Promise<Project[]> => {

@@ -11,7 +11,7 @@ export function AddScreenForm({ projectId, onSuccess }: AddScreenFormProps) {
   const [title, setTitle] = useState('');
   const [description, setDescription] = useState('');
   const [screenshot, setScreenshot] = useState<File | null>(null);
-  const [urlScreenshot, seturlScreenshot] = useState('');
+
   const [preview, setPreview] = useState<string | null>(null);
   const [errors, setErrors] = useState<any>({});
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -22,7 +22,7 @@ export function AddScreenForm({ projectId, onSuccess }: AddScreenFormProps) {
     if (title.length < 2 || title.length > 40) newErrors.title = 'O título deve ter entre 2 e 40 caracteres.';
     if (description.length < 10 || description.length > 90) newErrors.description = 'A descrição deve ter entre 10 e 90 caracteres.';
     if (description.length < 10) newErrors.description = 'A imagem do screenshot é obrigatória.';
-    // if (!screenshot) newErrors.screenshot = 'A imagem do screenshot é obrigatória.';
+    if (!screenshot) newErrors.screenshot = 'A imagem do screenshot é obrigatória.';
     setErrors(newErrors);
     return Object.keys(newErrors).length === 0;
   };
@@ -39,8 +39,17 @@ export function AddScreenForm({ projectId, onSuccess }: AddScreenFormProps) {
     e.preventDefault();
     if (!validate()) return;
     setIsSubmitting(true);
+
     try {
-      const newScreen = await addScreenToProject({ title, description, screenshot: urlScreenshot, projectId });
+      const formData = new FormData();
+      formData.append('title', title);
+      formData.append('description', description);
+      formData.append('projectId', projectId);
+      if (screenshot) {
+        formData.append('screenshot', screenshot);
+      }
+
+      const newScreen = await addScreenToProject(formData);
       alert('Tela cadastrada com sucesso.');
       onSuccess(newScreen);
     } catch (err) {
@@ -62,11 +71,6 @@ export function AddScreenForm({ projectId, onSuccess }: AddScreenFormProps) {
         <label className="form-label" htmlFor="description">Descrição</label>
         <textarea id="description" className="form-textarea" value={description} onChange={e => setDescription(e.target.value)} rows={3} />
         {errors.description && <p className="error-message-field">{errors.description}</p>}
-      </div>
-      <div className="form-group">
-        <label className="form-label" htmlFor="urlScreenshot">URL do screenshot</label>
-        <input id="urlScreenshot" type="text" className="form-input" value={urlScreenshot} onChange={e => seturlScreenshot(e.target.value)} />
-        {errors.urlScreenshot && <p className="error-message-field">{errors.urlScreenshot}</p>}
       </div>
       <div className="form-group">
         <label className="form-label">Screenshot</label>
